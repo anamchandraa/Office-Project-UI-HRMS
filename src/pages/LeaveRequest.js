@@ -103,8 +103,8 @@ const LeaveRequest = () => {
                 FromLeaveDate: inputtext.fromDate,
                 ToLeaveDate: inputtext.toDate,
                 Reason: inputtext.reason,
-                LeaveType: "SickLeave",
-                IsPaid: true
+                LeaveType: inputtext.leaveType,
+                IsPaid: inputtext.isPaid == 'yes' ? true : false
             }, config);
 
             setMessage(resp.data);

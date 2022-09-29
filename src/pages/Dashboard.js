@@ -1,154 +1,177 @@
-// import MyTimer from "../components/UseTimer";
-import React, { useState } from "react";
-import Geolocation from "../components/GeoLocation";
-
-import axios from "axios";
-
 const Dashboard = () => {
-  const [location, setLocation] = useState("");
-  // const [lat, setLat] = useState(0);
-  // const [lng, setLng] = useState(0);
 
-  const time = new Date();
-  time.setSeconds(time.getSeconds() + 32400); // 10 minutes timer
+  var userData = localStorage.getItem("token");
 
-  async function checkIn() {
-    try {
-      debugger
-      var userData = localStorage.getItem("token");
+  const t = JSON.parse(userData);
 
-      const t = JSON.parse(userData);
-      const config = {
-        headers: { Authorization: `Bearer ${t.Token}` }
-      };
+  if (t.UserType == "SubAdmin") {
+    return (
 
-      const resp = await axios.post("http://localhost:8080/Api/CheckInOut", {
-        EmployeeId: "UNI111",
-        InLocation: location
-      }, config);
 
-      alert(resp.data.message);
-    } catch (error) {
-      alert(error);
-    }
-  };
 
-  async function checkOut() {
-    try {
+      <div style={{ height: 500 }}>
+        <main id="main" classNameName="main">
+          <div classNameName="pagetitle">
+            <h1>Admin Dashboard</h1>
+            <nav>
+              <ol classNameName="breadcrumb">
+                <li classNameName="breadcrumb-item">
+                  <a href="dashboard">Dashboard</a>
+                </li>
+                <li classNameName="breadcrumb-item">Pages</li>
 
-      var userData = localStorage.getItem("token");
+              </ol>
+            </nav>
+          </div>
 
-      const t = JSON.parse(userData);
-      const config = {
-        headers: { Authorization: `Bearer ${t.Token}` }
-      };
-      const resp = await axios.post(" http://localhost:8080/Api/CheckInOut", {
-        EmployeeId: "UNI111",
-        OutLocation: location
-      }, config);
+          <section className="section dashboard">
+            <div className="row">
 
-      alert(resp.data.message);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
-  async function getLocation(lat,lng) {
-    try {
-      const locationAPIURL = "https://api.opencagedata.com/geocode/v1/json?q=" + lat + "+" + lng + "&key=abf008e0c99a4c5aa2cb57d46d2ef2cf";
-      const respLocation = await axios.get(locationAPIURL);
-      setLocation(respLocation.data.results[0].formatted)
-      console.log(respLocation.data.results[0])
-    } catch (error) {
-      console.log(error);
-    }
+              <div className="col-lg-12">
+                <div className="row">
+
+
+                  <div className="col-xxl-4 col-md-4">
+                    <div className="card info-card sales-card">
+
+                      <div className="filter">
+                        <a className="icon" href="#" data-bs-toggle="dropdown"><i className="bi bi-three-dots"></i></a>
+                        <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                          <li className="dropdown-header text-start">
+                            <h6>Filter</h6>
+                          </li>
+
+                          <li><a className="dropdown-item" href="#">Today</a></li>
+                          <li><a className="dropdown-item" href="#">This Month</a></li>
+                          <li><a className="dropdown-item" href="#">This Year</a></li>
+                        </ul>
+                      </div>
+
+                      <div className="card-body">
+                        <h5 className="card-title">Total Employee <span>| Today</span></h5>
+
+                        <div className="d-flex align-items-center">
+                          <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i className="bi bi-person"></i>
+                          </div>
+                          <div className="ps-3">
+                            <h6>30</h6>
+                            {/* <span className="text-success small pt-1 fw-bold">12%</span> <span className="text-muted small pt-2 ps-1">increase</span> */}
+
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+
+                  <div className="col-xxl-4 col-md-4">
+                    <div className="card info-card revenue-card">
+
+                      <div className="filter">
+                        <a className="icon" href="#" data-bs-toggle="dropdown"><i className="bi bi-three-dots"></i></a>
+                        <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                          <li className="dropdown-header text-start">
+                            <h6>Filter</h6>
+                          </li>
+
+                          <li><a className="dropdown-item" href="#">Today</a></li>
+                          <li><a className="dropdown-item" href="#">This Month</a></li>
+                          <li><a className="dropdown-item" href="#">This Year</a></li>
+                        </ul>
+                      </div>
+
+                      <div className="card-body">
+                        <h5 className="card-title">Present<span>| This Month</span></h5>
+
+                        <div className="d-flex align-items-center">
+                          <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i className="bi bi-person"></i>
+                          </div>
+                          <div className="ps-3">
+                            <h6>28</h6>
+                            {/* <span className="text-success small pt-1 fw-bold">8%</span> <span className="text-muted small pt-2 ps-1">increase</span> */}
+
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+
+                  <div className="col-xxl-4 col-md-4">
+                    <div className="card info-card revenue-card">
+
+                      <div className="filter">
+                        <a className="icon" href="#" data-bs-toggle="dropdown"><i className="bi bi-three-dots"></i></a>
+                        <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                          <li className="dropdown-header text-start">
+                            <h6>Filter</h6>
+                          </li>
+
+                          <li><a className="dropdown-item" href="#">Today</a></li>
+                          <li><a className="dropdown-item" href="#">This Month</a></li>
+                          <li><a className="dropdown-item" href="#">This Year</a></li>
+                        </ul>
+                      </div>
+
+                      <div className="card-body">
+                        <h5 className="card-title">Absent<span>| This Month</span></h5>
+
+                        <div className="d-flex align-items-center">
+                          <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i className="bi bi-person"></i>
+                          </div>
+                          <div className="ps-3">
+                            <h6>02</h6>
+                            {/* <span className="text-success small pt-1 fw-bold">8%</span> <span className="text-muted small pt-2 ps-1">increase</span> */}
+
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+
+
+
+
+            </div>
+          </section>
+
+        </main>
+      </div>
+    )
   }
 
-  const getCurrentPosition = () => {
-    const geolocation = navigator.geolocation;
-    
-    geolocation.getCurrentPosition(
-      position => {
-        console.log(position);
-      },
-      () => {
-        console.log(new Error("Permission denied"));
-      }
-    );
-  };
+  else if (t.UserType == "Employee") {
+    return (
+      <div style={{ height: 500 }}>
+        <main id="main" classNameName="main">
+          <div classNameName="pagetitle">
+            <h1>Employee Dashboard</h1>
+            <nav>
+              <ol classNameName="breadcrumb">
+                <li classNameName="breadcrumb-item">
+                  <a href="dashboard">Dashboard</a>
+                </li>
+                <li classNameName="breadcrumb-item">Pages</li>
 
-  return (
-
-    <div style={{ height: 500 }}>
-      <main id="main" className="main">
-        <div className="pagetitle">
-          <h1>User Dashboard</h1>
-          <nav>
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <a href="dashboard">Dashboard</a>
-              </li>
-              <li className="breadcrumb-item">Pages</li>
-              {/* <li className="breadcrumb-item active">Blank</li> */}
-            </ol>
-          </nav>
-        </div>
-
-        <section className="section">
-          <div className="row">
-            <div className="col-lg-6">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">Attendance</h5>
-
-                  {/* <MyTimer expiryTimestamp={time} autostart={false} /> */}
-                  <button onClick={checkIn} className="btn btn-success">Check In</button> <span>{" "}</span>
-                  <button onClick={checkOut} className="btn btn-info">Check Out</button> <span>{" "}</span>
-
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-6">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">My Current Location</h5>
-                  <p>
-                    <Geolocation
-                      render={({
-                        fetchingPosition,
-                        position: { coords: { latitude, longitude } = {} } = {},
-                        error,
-                        getCurrentPosition
-                      }) => (
-                        <div>
-                          <button onClick={getCurrentPosition} className="btn btn-info">Update Location</button>
-                          <button onClick={getLocation(latitude,longitude)} style={{display:'none'}}>Get Position</button>
-                          <br/>
-                          <br/>
-                          {error && <div>{error.message}</div>}
-                         
-                            <h5>Latitude: </h5> {latitude}
-                            <br />
-                            <br />
-                            <h5>Longitude: </h5> {longitude}
-                            <br />
-                            <br />
-                            <h5> Location: </h5> {location}
-                         
-                        </div>
-                      )}
-                    />
-                  </p>
-                </div>
-              </div>
-            </div>
+              </ol>
+            </nav>
           </div>
-        </section>
 
-      </main>
-    </div>
 
-  );
+
+        </main>
+      </div>);
+  }
 };
 export default Dashboard;

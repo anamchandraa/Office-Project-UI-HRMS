@@ -4,10 +4,12 @@ import Error from "./pages/Error";
 import SharedLayout from "./pages/SharedLayout";
 import LoginLayout from "./pages/LoginLayout";
 import Dashboard from "./pages/Dashboard";
+import CheckInOut from "./pages/CheckInOut";
 import MyCalendar from "./pages/MyCalendar";
 import Login from "./pages/Login";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import LeaveRequest from "./pages/LeaveRequest";
+import Profile from "./pages/Profile";
 
 
 function App() {
@@ -23,9 +25,15 @@ function App() {
 
         <Route element={<SharedLayout user={user} />}>
           <Route path='dashboard' element={
-            <ProtectedRoute user={user}>
+            // <ProtectedRoute user={user}>
               <Dashboard />
-            </ProtectedRoute>
+            // </ProtectedRoute>
+          } />
+
+          <Route path='check-in-out' element={
+            // <ProtectedRoute user={user}>
+            <CheckInOut />
+            // </ProtectedRoute>
           } />
 
           <Route path='calendar' element={
@@ -36,13 +44,22 @@ function App() {
 
           <Route path='leave-request' element={
             // <ProtectedRoute user={user}>
-              <LeaveRequest />
+            <LeaveRequest />
             // </ProtectedRoute>
           } />
 
 
 
         </Route>
+        <Route path='profile' element={
+            // <ProtectedRoute user={user}>
+            <Profile/>
+            // </ProtectedRoute>
+          } />
+
+
+
+        
 
 
 
