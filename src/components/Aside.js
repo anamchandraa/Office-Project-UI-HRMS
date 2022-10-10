@@ -17,11 +17,82 @@ const Aside = () => {
             </li>
 
             <li className="nav-item">
-              <a className="nav-link collapsed" href="dashbaord">
+              <a className="nav-link collapsed" href="profile">
                 <i className="bi bi-grid" />
                 <span>Profile</span>
               </a>
             </li>
+
+
+            <li className="nav-item">
+              <a
+                className="nav-link collapsed"
+                data-bs-target="#components-nav"
+                data-bs-toggle="collapse"
+                href="#"
+              >
+                <i className="bi bi-menu-button-wide" />
+                <span>Employee</span>
+                <i className="bi bi-chevron-down ms-auto" />
+              </a>
+              <ul
+                id="components-nav"
+                className="nav-content collapse "
+                data-bs-parent="#sidebar-nav"
+              >
+                <li>
+                  <a href="add-employee">
+                    <i className="bi bi-circle" />
+                    <span>Add Employee</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="remove-employee">
+                    <i className="bi bi-circle" />
+                    <span> Remove Employee</span>
+                  </a>
+                </li>
+
+
+                <li>
+                  <a href="all-employee">
+                    <i className="bi bi-circle" />
+                    <span> All Employee</span>
+                  </a>
+                </li>
+
+
+
+
+              </ul>
+            </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             <li className="nav-item">
@@ -41,9 +112,9 @@ const Aside = () => {
                 data-bs-parent="#sidebar-nav"
               >
                 <li>
-                  <a href="components-alerts.html">
+                  <a href="view-attendence">
                     <i className="bi bi-circle" />
-                    <span>View User Attendance</span>
+                    <span>View User Attendence</span>
                   </a>
                 </li>
 

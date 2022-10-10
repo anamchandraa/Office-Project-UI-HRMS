@@ -232,7 +232,7 @@ const Header = ({ user }) => {
             <li className="nav-item dropdown pe-3">
               <a
                 className="nav-link nav-profile d-flex align-items-center pe-0"
-                href="#"
+                href="profile"
                 data-bs-toggle="dropdown"
               >
                 <img
@@ -257,7 +257,7 @@ const Header = ({ user }) => {
                 <li>
                   <a
                     className="dropdown-item d-flex align-items-center"
-                    href="users-profile.html"
+                    href="profile"
                   >
                     <i className="bi bi-person" />
                     <span>My Profile</span>

@@ -10,6 +10,13 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import LeaveRequest from "./pages/LeaveRequest";
 import Profile from "./pages/Profile";
+import ViewAttendence from "./pages/ViewAttendence";
+import AddEmployee from "./pages/AddEmployee";
+import RemoveEmployee from "./components/RemoveEmployee";
+import AllEmployees from "./pages/SubAdmin/AllEmployees";
+import EmployeeInOutDetails from "./pages/SubAdmin/EmployeeInOutDetails";
+
+
 
 
 function App() {
@@ -26,7 +33,7 @@ function App() {
         <Route element={<SharedLayout user={user} />}>
           <Route path='dashboard' element={
             // <ProtectedRoute user={user}>
-              <Dashboard />
+            <Dashboard />
             // </ProtectedRoute>
           } />
 
@@ -48,18 +55,62 @@ function App() {
             // </ProtectedRoute>
           } />
 
-
-
-        </Route>
-        <Route path='profile' element={
+          <Route path='profile' element={
             // <ProtectedRoute user={user}>
-            <Profile/>
+            <Profile />
             // </ProtectedRoute>
           } />
 
+        <Route path='add-Employee' element={
+            // <ProtectedRoute user={user}>
+            <AddEmployee/>
+            // </ProtectedRoute>
+          } >
 
+        </Route>
+
+        <Route path='remove-Employee' element={
+            // <ProtectedRoute user={user}>
+            <RemoveEmployee/>
+            // </ProtectedRoute>
+          } >
+
+        </Route>
+
+        <Route path='all-Employee' element={
+            // <ProtectedRoute user={user}>
+            <AllEmployees/>
+            // </ProtectedRoute>
+          } >
+
+        </Route> 
+
+        <Route path='in-out-details' element={
+            // <ProtectedRoute user={user}>
+            <EmployeeInOutDetails/>
+            // </ProtectedRoute>
+          } >
+
+        </Route>  
+
+       
+
+        </Route>
 
         
+
+        <Route path='view-Attendence' element={
+            // <ProtectedRoute user={user}>
+            <ViewAttendence/>
+            // </ProtectedRoute>
+          } >
+
+        </Route>
+
+
+
+
+
 
 
 

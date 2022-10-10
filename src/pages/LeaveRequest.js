@@ -4,8 +4,6 @@ import React, { useState } from "react";
 const LeaveRequest = () => {
 
     const currentDate = new Date();
-    const { useState } = React;
-
     const [inputtext, setinputtext] = useState({
         fromDate: "",
         toDate: "",
@@ -24,23 +22,23 @@ const LeaveRequest = () => {
     const [warnrequirdIsPaid, setwarnrequirdIsPaid] = useState("");
 
     const inputEvent = event => {
-        debugger
+        
         const name = event.target.name;
         const value = event.target.value;
 
-        if (name == "fromDate")
+        if (name === "fromDate")
             setwarnrequirdFromDate("");
 
-        if (name == "toDate")
+        if (name === "toDate")
             setwarnrequirdToDate("");
 
-        if (name == "reason")
+        if (name === "reason")
             setwarnrequirdReason("");
 
-        if (name == "leaveType")
+        if (name === "leaveType")
             setwarnrequirdLeaveType("");
 
-        if (name == "isPaid")
+        if (name === "isPaid")
             setwarnrequirdIsPaid("");
 
         setinputtext(lastValue => {
@@ -51,63 +49,62 @@ const LeaveRequest = () => {
         });
     }
 
+    async function reset () {
+        inputtext.fromDate = "";
+        inputtext.toDate = "";
+        inputtext.reason = "";
+        inputtext.leaveType = "";
+        inputtext.isPaid = "";
+        
+    }
 
     async function applyLeave() {
         try {
-            debugger
+            
 
-            if (inputtext.fromDate == "") {
+            if (inputtext.fromDate === "") {
                 setisformvalid(false);
                 setwarnrequirdFromDate("Please enter from date.");
             }
 
-            if (inputtext.toDate == "") {
+            if (inputtext.toDate === "") {
                 setisformvalid(false);
                 setwarnrequirdToDate("Please enter to date.");
             }
 
-            if (inputtext.reason == "") {
+            if (inputtext.reason === "") {
                 setisformvalid(false);
                 setwarnrequirdReason("Please enter reason.");
             }
 
-            if (inputtext.leaveType == "") {
+            if (inputtext.leaveType === "") {
                 setisformvalid(false);
                 setwarnrequirdLeaveType("Please select leave type.");
             }
 
-            if (inputtext.isPaid == "") {
+            if (inputtext.isPaid === "") {
                 setisformvalid(false);
                 setwarnrequirdIsPaid("Please select Is paid.");
             }
 
             var userData = localStorage.getItem("token");
 
-            debugger
+            
             const t = JSON.parse(userData);
             const config = {
                 headers: { Authorization: `Bearer ${t.Token}` }
             };
 
-            // const resp = await axios.post("http://localhost:8080/Api/LeaveRequest", {
-            //     EmployeeId: "UNI111",
-            //     FromLeaveDate: "2022-10-18",
-            //     ToLeaveDate: "2022-10-25",
-            //     Reason: "I am having fever.",
-            //     LeaveType: "SickLeave",
-            //     IsPaid: true
-            // }, config);
-
             const resp = await axios.post("http://localhost:8080/Api/LeaveRequest", {
-                EmployeeId: "UNI111",
+                EmployeeId: t.UserId,
                 FromLeaveDate: inputtext.fromDate,
                 ToLeaveDate: inputtext.toDate,
                 Reason: inputtext.reason,
                 LeaveType: inputtext.leaveType,
-                IsPaid: inputtext.isPaid == 'yes' ? true : false
+                IsPaid: inputtext.isPaid === 'yes' ? true : false
             }, config);
-
-            setMessage(resp.data);
+            reset();
+            setMessage(resp.data.message);
         } catch (error) {
             console.log(error);
             setMessage(error.message);

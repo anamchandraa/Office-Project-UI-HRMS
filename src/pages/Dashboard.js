@@ -32,8 +32,8 @@ const Dashboard = () => {
                 <div className="row">
 
 
-                  <div className="col-xxl-4 col-md-4">
-                    <div className="card info-card sales-card">
+                  <div className="col-xxl-4 col-md-4" >
+                    <div className="card info-card sales-card" >
 
                       <div className="filter">
                         <a className="icon" href="#" data-bs-toggle="dropdown"><i className="bi bi-three-dots"></i></a>
@@ -48,7 +48,7 @@ const Dashboard = () => {
                         </ul>
                       </div>
 
-                      <div className="card-body">
+                      <div className="card-body" >
                         <h5 className="card-title">Total Employee <span>| Today</span></h5>
 
                         <div className="d-flex align-items-center">
@@ -67,8 +67,8 @@ const Dashboard = () => {
                   </div>
 
 
-                  <div className="col-xxl-4 col-md-4">
-                    <div className="card info-card revenue-card">
+                  <div className="col-xxl-4 col-md-4"  >
+                    <div className="card info-card revenue-card" >
 
                       <div className="filter">
                         <a className="icon" href="#" data-bs-toggle="dropdown"><i className="bi bi-three-dots"></i></a>
@@ -83,10 +83,10 @@ const Dashboard = () => {
                         </ul>
                       </div>
 
-                      <div className="card-body">
+                      <div className="card-body" >
                         <h5 className="card-title">Present<span>| This Month</span></h5>
 
-                        <div className="d-flex align-items-center">
+                        <div className="d-flex align-items-center" >
                           <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <i className="bi bi-person"></i>
                           </div>
@@ -118,7 +118,7 @@ const Dashboard = () => {
                         </ul>
                       </div>
 
-                      <div className="card-body">
+                      <div className="card-body" >
                         <h5 className="card-title">Absent<span>| This Month</span></h5>
 
                         <div className="d-flex align-items-center">
