@@ -15,6 +15,8 @@ import AddEmployee from "./pages/AddEmployee";
 import RemoveEmployee from "./components/RemoveEmployee";
 import AllEmployees from "./pages/SubAdmin/AllEmployees";
 import EmployeeInOutDetails from "./pages/SubAdmin/EmployeeInOutDetails";
+import AllEmployeeAttendence from "./pages/SubAdmin/AllEmployeeAttendence";
+import LeaveApproval from "./pages/LeaveApproval";
 
 
 
@@ -54,6 +56,19 @@ function App() {
             <LeaveRequest />
             // </ProtectedRoute>
           } />
+          
+          <Route path='leave-request' element={
+            // <ProtectedRoute user={user}>
+            <LeaveApproval />
+            // </ProtectedRoute>
+          } />
+
+
+
+
+
+
+
 
           <Route path='profile' element={
             // <ProtectedRoute user={user}>
@@ -88,6 +103,14 @@ function App() {
         <Route path='in-out-details' element={
             // <ProtectedRoute user={user}>
             <EmployeeInOutDetails/>
+            // </ProtectedRoute>
+          } >
+
+        </Route>  
+
+        <Route path='all-employees-attendence' element={
+            // <ProtectedRoute user={user}>
+            <AllEmployeeAttendence/>
             // </ProtectedRoute>
           } >
 

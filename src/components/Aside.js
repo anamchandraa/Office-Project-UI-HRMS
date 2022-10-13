@@ -62,6 +62,13 @@ const Aside = () => {
                   </a>
                 </li>
 
+                <li>
+                  <a href="all-employees-attendence">
+                    <i className="bi bi-circle" />
+                    <span> All Employee Attendance</span>
+                  </a>
+                </li>
+
 
 
 
