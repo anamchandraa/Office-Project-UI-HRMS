@@ -24,8 +24,10 @@ const MyCalendar = () => {
           </div>
         </div>
       </section>
+    
     </main>
   </div>
+  
   );
 };
 export default MyCalendar;

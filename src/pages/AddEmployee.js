@@ -61,8 +61,8 @@ const AddEmployee = () =>{
                   <input type="password" class="form-control" id="inputPassword5"/>
                 </div>
                 <div class="col-6">
-                  <label for="inputAddress5" class="form-label">D
-                  epartment id</label>
+                  <label for="inputAddress5" class="form-label">
+                  Department id</label>
                   <input type="text" class="form-control" id="inputAddres5s" placeholder="text"/>
                 </div>
                 <div class="col-6">
@@ -376,6 +376,8 @@ const AddEmployee = () =>{
                       <input type="date" class="form-control"/>
                     
                   </div>
+                  
+                
    
                 </div>
                 <div class="col-md-6">

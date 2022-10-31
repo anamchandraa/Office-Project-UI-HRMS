@@ -6,6 +6,7 @@ const Aside = () => {
 
   if (t.UserType == "SubAdmin") {
     return (
+    
       <div>
         <aside id="sidebar" className="sidebar">
           <ul className="sidebar-nav" id="sidebar-nav">
@@ -61,6 +62,7 @@ const Aside = () => {
                     <span> All Employee</span>
                   </a>
                 </li>
+               
 
                 <li>
                   <a href="all-employees-attendence">
@@ -136,6 +138,8 @@ const Aside = () => {
 
 
 
+
+
               </ul>
             </li>
 
@@ -166,9 +170,9 @@ const Aside = () => {
                 </li>
 
                 <li>
-                  <a href="components-alerts.html">
+                  <a href="all-leaves-requests">
                     <i className="bi bi-circle" />
-                    <span>Approval Leave</span>
+                    <span>All Leaves Requests</span>
                   </a>
                 </li>
 
@@ -238,7 +242,10 @@ const Aside = () => {
         </aside>
       </div>
     );
-  }
+
+
+
+}
 
   if (t.UserType == "Employee") {
     return (

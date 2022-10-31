@@ -25,29 +25,117 @@ const EmployeeInOutDetails = () => {
             "message": "Attendance Fetched Successfully",
             "data": [
                 {
-                    "DayDate": "2022-10-09T00:00:00.000Z",
-                    "InTime": null,
-                    "OutTime": null,
-                    "AttendanceType": "WD",
-                    "OutLocation": null,
-                    "InLocation": null
-                },
-                {
-                    "DayDate": "2022-10-10T00:00:00.000Z",
-                    "InTime": null,
-                    "OutTime": null,
-                    "AttendanceType": "WD",
-                    "OutLocation": null,
-                    "InLocation": null
-                },
-                {
-                    "DayDate": "2022-10-13T00:00:00.000Z",
-                    "InTime": null,
-                    "OutTime": null,
-                    "AttendanceType": "AL",
-                    "OutLocation": null,
-                    "InLocation": null
-                },
+                  "DayDate": "2022-10-13T00:00:00.000Z",
+                  "InTime": "1970-01-01T09:30:33.000Z",
+                  "OutTime": "1970-01-01T06:30:33.000Z",
+                  "AttendanceType": "P",
+                  "OutLocation": "dominoes, Meerut, Uttar Pradesh 250001, IN",
+                  "InLocation": "dominoes, Meerut, Uttar Pradesh 250001, IN"
+              },
+              {
+                  "DayDate": "2022-10-14T00:00:00.000Z",
+                  "InTime": "1970-01-01T09:40:30.000Z",
+                  "OutTime": "1970-01-01T06:50:30.000Z",
+                  "AttendanceType": "P",
+                  "OutLocation": "dominoes, Meerut, Uttar Pradesh 250001, IN",
+                  "InLocation": "dominoes, Meerut, Uttar Pradesh 250001, IN"
+              },
+              {
+                  "DayDate": "2022-10-15T00:00:00.000Z",
+                  "InTime": "1970-01-01T09:40:30.000Z",
+                  "OutTime": "1970-01-01T06:40:30.000Z",
+                  "AttendanceType": "P",
+                  "OutLocation": "dominoes, Meerut, Uttar Pradesh 250001, IN",
+                  "InLocation": "dominoes, Meerut, Uttar Pradesh 250001, IN"
+              },
+              {
+                  "DayDate": "2022-10-17T00:00:00.000Z",
+                  "InTime": null,
+                  "OutTime": null,
+                  "AttendanceType": "AL",
+                  "OutLocation": null,
+                  "InLocation": null
+              },
+              {
+                  "DayDate": "2022-10-18T00:00:00.000Z",
+                  "InTime": null,
+                  "OutTime": null,
+                  "AttendanceType": "WD",
+                  "OutLocation": null,
+                  "InLocation": null
+              },
+              {
+                  "DayDate": "2022-10-19T00:00:00.000Z",
+                  "InTime": null,
+                  "OutTime": null,
+                  "AttendanceType": "AL",
+                  "OutLocation": null,
+                  "InLocation": null
+              },
+              {
+                  "DayDate": "2022-10-20T00:00:00.000Z",
+                  "InTime": null,
+                  "OutTime": null,
+                  "AttendanceType": "AL",
+                  "OutLocation": null,
+                  "InLocation": null
+              },
+              {
+                  "DayDate": "2022-10-21T00:00:00.000Z",
+                  "InTime": null,
+                  "OutTime": null,
+                  "AttendanceType": "WD",
+                  "OutLocation": null,
+                  "InLocation": null
+              },
+              {
+                  "DayDate": "2022-10-22T00:00:00.000Z",
+                  "InTime": null,
+                  "OutTime": null,
+                  "AttendanceType": "AL",
+                  "OutLocation": null,
+                  "InLocation": null
+              },
+              {
+                  "DayDate": "2022-10-23T00:00:00.000Z",
+                  "InTime": null,
+                  "OutTime": null,
+                  "AttendanceType": "AL",
+                  "OutLocation": null,
+                  "InLocation": null
+              },
+              {
+                  "DayDate": "2022-10-24T00:00:00.000Z",
+                  "InTime": null,
+                  "OutTime": null,
+                  "AttendanceType": "AL",
+                  "OutLocation": null,
+                  "InLocation": null
+              },
+              {
+                  "DayDate": "2022-10-25T00:00:00.000Z",
+                  "InTime": null,
+                  "OutTime": null,
+                  "AttendanceType": "WD",
+                  "OutLocation": null,
+                  "InLocation": null
+              },
+              {
+                  "DayDate": "2022-10-26T00:00:00.000Z",
+                  "InTime": null,
+                  "OutTime": null,
+                  "AttendanceType": "AL",
+                  "OutLocation": null,
+                  "InLocation": null
+              },
+              {
+                  "DayDate": "2022-10-27T00:00:00.000Z",
+                  "InTime": null,
+                  "OutTime": null,
+                  "AttendanceType": "AL",
+                  "OutLocation": null,
+                  "InLocation": null
+              }        
             ]
         }]
         
@@ -109,12 +197,120 @@ debugger
         </nav>
       </div>
 
+      <section>
+        
+      <div className="col-sm-12">
+                </div>
+
+                <div className="row filter-row">
+                    {/* <div className="col-sm-6 col-md-3"> */}
+                        {/* <div className="form-group form-focus">
+                            <input type="employee Name" className="form-control floating" placeholder="Employee Name" />
+
+                        </div> */}
+
+                    {/* </div> */}
+                    <div className="col-sm-6 col-md-3">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected="">Select Month</option>
+                            <option>Jan</option>
+                            <option>Feb</option>
+                            <option>Mar</option>
+                            <option>Apr</option>
+                            <option>May</option>
+                            <option>Jun</option>
+                            <option>Jul</option>
+                            <option>Aug</option>
+                            <option>Sep</option>
+                            <option>Oct</option>
+                            <option>Nov</option>
+                            <option>Dec</option>
+                        </select>
+                    </div>
+                    <div className="col-sm-6 col-md-3">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected="">Select Year</option>
+                            <option>2022</option>
+                            <option>2021</option>
+                            <option>2020</option>
+                            <option>2019</option>
+                            <option>2018</option>
+                            <option>2017</option>
+                        </select>
+                    </div>
+
+
+                    <div className="col-sm-6 col-md-3">
+
+                    <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">«</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">Current</a></li>
+                  {/* <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li> */}
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">»</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+                      
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                    <div className="col-sm-6 col-md-2">
+                        <a href="#" className="btn btn-success btn-block w-100"> Search </a>
+                    </div>
+                </div>
+            </section>
+
+
+        <br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <section className="section">
         <div className="row">
           <div className="col-lg-12">
             <div className="card">
+
+              
               <div className="card-body">
                 <h5 className="card-title">Employee's In/Out</h5>
+
+                
 
                 {calenderData.map((d, index) => {
                   return (

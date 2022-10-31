@@ -17,7 +17,7 @@ import AllEmployees from "./pages/SubAdmin/AllEmployees";
 import EmployeeInOutDetails from "./pages/SubAdmin/EmployeeInOutDetails";
 import AllEmployeeAttendence from "./pages/SubAdmin/AllEmployeeAttendence";
 import LeaveApproval from "./pages/LeaveApproval";
-
+import AllLeaveRequests from "./pages/SubAdmin/AllLeaveRequests";
 
 
 
@@ -111,6 +111,14 @@ function App() {
         <Route path='all-employees-attendence' element={
             // <ProtectedRoute user={user}>
             <AllEmployeeAttendence/>
+            // </ProtectedRoute>
+          } >
+
+        </Route> 
+
+        <Route path='all-leaves-requests' element={
+            // <ProtectedRoute user={user}>
+            <AllLeaveRequests/>
             // </ProtectedRoute>
           } >
 

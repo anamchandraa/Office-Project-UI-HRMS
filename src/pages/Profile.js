@@ -8,12 +8,21 @@ const Profile =()=>{
 
 
     return(
-      <main id="main" classNameName="main">
-        <section class="section profile">
+      <main id="main" className="main">
+        {/* <section class="section profile">
       <div class="row">
         <div class="col-xl-4">
 
           <div class="card">
+
+          </div>
+
+        </div> */}
+
+        <div class="col-xl-12">
+
+          <div class="card">
+            <div class="card-body pt-12">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
               <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"/>
@@ -25,15 +34,7 @@ const Profile =()=>{
                 <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
                 <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
               </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="col-xl-8">
-
-          <div class="card">
-            <div class="card-body pt-3">
+              </div>
               
               <ul class="nav nav-tabs nav-tabs-bordered" role="tablist">
 
@@ -285,9 +286,9 @@ const Profile =()=>{
           </div>
 
         </div>
-      </div>
-    </section>
-    </main>
+      {/* </div> */}
+    {/* // </section> */}
+     </main>
 
     )
 }
