@@ -21,7 +21,7 @@ const AllEmployeeAttendence = () => {
         };
 
         axios
-            .post("http://localhost:8080/Api/GetAllEmployeeAttendance", {
+            .post("http://hrm.unibillapp.com:8080/Api/GetAllEmployeeAttendance", {
                 "MonthandYear": "2022-11"
             }, config)
             .then((res) => {
@@ -141,18 +141,52 @@ const AllEmployeeAttendence = () => {
 
                                                         {(() => {
                                                             const rows = [];
+                                                            let countLeave;
+                                                            let leaveData;
+                                                            let colorCircle = "red";
+                                                            let leaveTitle = "";
+
+                                                            data.map((d, i) => {
+
+                                                                countLeave = Object.keys(d.leave).length;
+                                                                leaveData = d.leave;
+                                                                
+                                                            })
+
                                                             for (let i = 1; i <= 31; i++) {
 
-                                                                i = "1" ? rows.push(<td className="ri-close-circle-fill" style={{ width: "20px", color: "red" }} id={d.EmployeeName + "_" + i} key={i}> </td>) : rows.push(<td style={{ width: "20px" }} id={d.EmployeeName + "_" + i} key={i}></td>)
+                                                                for (let j = 0; j < countLeave; j++) {
+
+                                                                    var leave = leaveData[j];
+                                                                    var dateLeave = new Date(leave.DayDate);
+                                                                    var dayLeave = dateLeave.getDate();
+                                                                    if (i === dayLeave) {
+                                                                        debugger;
+                                                                        leaveTitle = "Leave: " + leave.WeekDay + " - " + leave.LeaveRequestType
+                                                                        colorCircle = "yellow"
+                                                                        break;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        leaveTitle = "Absent";
+                                                                        colorCircle = "red"
+                                                                    }
+
+                                                                }
+
+                                                                i = "1" ? rows.push(<td className="ri-close-circle-fill" title={leaveTitle}
+                                                                style={{ width: "20px", color: colorCircle }} id={d.EmployeeName + "_" + i} key={i}> </td>) : rows.push(<td style={{ width: "20px" }} id={d.EmployeeName + "_" + i} key={i}></td>)
                                                             }
 
                                                             data.map((d, i) => {
 
                                                                 const count = Object.keys(d.Attendance).length;
+                                                                
 
                                                                 for (let i = 0; i <= count; i++) {
-                                                                    debugger
+
                                                                     let attendance = d.Attendance[i];
+
 
                                                                     if (attendance != undefined) {
                                                                         let dailyCheckInOut = d.Attendance[i].Attendance;
@@ -160,34 +194,43 @@ const AllEmployeeAttendence = () => {
                                                                         let dayDate = new Date(attendance.DayDate);
                                                                         let day = dayDate.getDate();
                                                                         var inTime;
-
                                                                         var outTime;
+                                                                        var inLocation;
+                                                                        var outLocation;
 
-                                                                        var color = "red"
+                                                                        var title = "Present";
+                                                                        var color = "green"
                                                                         if (attendance.AttendanceType === "P") {
                                                                             color = "green"
                                                                         }
                                                                         else if (attendance.AttendanceType === "HD") {
-                                                                            color = "yellow"
+                                                                            color = "orange"
+                                                                            title = "Half Day"
                                                                         }
+
+
+                                                                       
+
                                                                         let activities = [];
                                                                         if (dailyCheckInOut != null && dailyCheckInOut != undefined) {
 
-                                                                            console.log(dailyCheckInOut)
+
 
                                                                             for (let j = 0; j < dailyCheckInOutCount; j++) {
 
                                                                                 inTime = null
                                                                                 outTime = null
+                                                                                inLocation = null
+                                                                                outLocation = null
 
                                                                                 if (dailyCheckInOut[j] != null && dailyCheckInOut[j] != undefined) {
-                                                                                    if (dailyCheckInOut[j].InTime != null && dailyCheckInOut[j].InTime != undefined)
-                                                                                    {
+                                                                                    if (dailyCheckInOut[j].InTime != null && dailyCheckInOut[j].InTime != undefined) {
                                                                                         inTime = moment(dailyCheckInOut[j].InTime).utc().format('LTS');
+                                                                                        inLocation = dailyCheckInOut[j].InLocation;
                                                                                     }
-                                                                                    if (dailyCheckInOut[j].OutTime != null && dailyCheckInOut[j].OutTime != undefined)
-                                                                                    {
+                                                                                    if (dailyCheckInOut[j].OutTime != null && dailyCheckInOut[j].OutTime != undefined) {
                                                                                         outTime = moment(dailyCheckInOut[j].OutTime).utc().format('LTS');
+                                                                                        outLocation = dailyCheckInOut[j].OutLocation
                                                                                     }
                                                                                 }
 
@@ -195,35 +238,39 @@ const AllEmployeeAttendence = () => {
 
 
                                                                                 activities.push(<div key={j}>
-                                                                                    
+
                                                                                     <div class="activity-item d-flex">
                                                                                         <div class="activite-label">In</div>
                                                                                         <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
                                                                                         <div class="activity-content">
-                                                                                            {inTime}
+                                                                                            {inTime} - {inLocation}
                                                                                         </div>
                                                                                     </div>
 
+
+
                                                                                     <div class="activity-item d-flex">
-                                                                                        <div class="activite-label">Out</div>
-                                                                                        <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                                                                                        <div class="activite-label">out</div>
+                                                                                        <i class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
                                                                                         <div class="activity-content">
-                                                                                            {outTime}
+                                                                                            {outTime} - {outLocation}
                                                                                         </div>
                                                                                     </div>
+                                                                                    <br />
+
                                                                                 </div>)
                                                                             }
 
-                                                                            
+
                                                                         }
 
                                                                         const col = <td id={d.EmployeeName + "_" + day} key={day}>
                                                                             <button style={{ border: "none", background: "white" }} type="button" data-bs-toggle="modal" data-bs-target={"#basicModal" + "_" + day}>
                                                                                 <i style={{ width: "20px", color: color }} className="ri-checkbox-circle-fill" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                                    title={"Attendance Type: " + attendance.AttendanceType + " / In Time: " + inTime + " (" + attendance.InLocation + ")" + " / Out Time: " + outTime + " (" + attendance.OutLocation + ")"}></i>
+                                                                                   title={title} ></i>
                                                                             </button>
                                                                             <div class="modal fade" id={"basicModal" + "_" + day} tabindex="-1" style={{ display: "none" }} aria-hidden="true">
-                                                                                <div class="modal-dialog">
+                                                                                <div class="modal-dialog modal-lg">
                                                                                     <div class="modal-content">
                                                                                         <div class="modal-header">
                                                                                             <h5 class="modal-title">Attendance Info</h5>
@@ -245,7 +292,7 @@ const AllEmployeeAttendence = () => {
                                                                                                                 <div class="card">
 
                                                                                                                     <div class="card-body">
-                                                                                                                        <h5 class="card-title">Punch Recent Activity</h5>
+                                                                                                                        <h5 class="card-title">Punch In/Out Activity</h5>
 
                                                                                                                         <div class="activity">
 
@@ -308,9 +355,13 @@ const AllEmployeeAttendence = () => {
                 </div>
             </section >
         </main >
+        
 
     )
 };
 export default AllEmployeeAttendence;
 
 
+<div>
+    <button className="btn btn-submit" value="submit">submit</button>
+</div>

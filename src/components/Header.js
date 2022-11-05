@@ -31,7 +31,7 @@ const Header = ({ user }) => {
           <i className="bi bi-list toggle-sidebar-btn" onClick={toggleSidebar}/>
         </div>
 
-        <div className="search-bar">
+        <div className="search-bar" style={{display:"none"}}>
           <form
             className="search-form d-flex align-items-center"
             method="POST"
@@ -50,14 +50,14 @@ const Header = ({ user }) => {
         </div>
 
         <nav className="header-nav ms-auto">
-          <ul className="d-flex align-items-center">
+          <ul className="d-flex align-items-center" >
             <li className="nav-item d-block d-lg-none">
               <a className="nav-link nav-icon search-bar-toggle " href="#">
                 <i className="bi bi-search" />
               </a>
             </li>
 
-            <li className="nav-item dropdown">
+            <li className="nav-item dropdown" style={{display:"none"}}>
               <a
                 className="nav-link nav-icon"
                 href="#"
@@ -137,7 +137,7 @@ const Header = ({ user }) => {
               </ul>
             </li>
 
-            <li className="nav-item dropdown">
+            <li className="nav-item dropdown" style={{display:"none"}}>
               <a
                 className="nav-link nav-icon"
                 href="#"
@@ -236,7 +236,7 @@ const Header = ({ user }) => {
                 data-bs-toggle="dropdown"
               >
                 <img
-                  src="assets/img/profile-img.jpg"
+                  src="assets/img/product-5.jpg"
                   alt="Profile"
                   className="rounded-circle"
                 />
@@ -246,15 +246,15 @@ const Header = ({ user }) => {
               </a>
 
               <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                <li className="dropdown-header">
+                <li className="dropdown-header" style={{display:"none"}}>
                   <h6>{user?.phoneNumber}</h6>
                   <span>User</span>
                 </li>
-                <li>
+                <li style={{display:"none"}}>
                   <hr className="dropdown-divider" />
                 </li>
 
-                <li>
+                <li style={{display:"none"}}>
                   <a
                     className="dropdown-item d-flex align-items-center"
                     href="profile"
@@ -263,11 +263,11 @@ const Header = ({ user }) => {
                     <span>My Profile</span>
                   </a>
                 </li>
-                <li>
+                <li style={{display:"none"}}>
                   <hr className="dropdown-divider" />
                 </li>
 
-                <li>
+                <li style={{display:"none"}}>
                   <a
                     className="dropdown-item d-flex align-items-center"
                     href="users-profile.html"
@@ -276,11 +276,11 @@ const Header = ({ user }) => {
                     <span>Account Settings</span>
                   </a>
                 </li>
-                <li>
+                <li style={{display:"none"}}>
                   <hr className="dropdown-divider" />
                 </li>
 
-                <li>
+                <li style={{display:"none"}}>
                   <a
                     className="dropdown-item d-flex align-items-center"
                     href="pages-faq.html"
@@ -289,11 +289,11 @@ const Header = ({ user }) => {
                     <span>Need Help?</span>
                   </a>
                 </li>
-                <li>
+                <li style={{display:"none"}}>
                   <hr className="dropdown-divider" />
                 </li>
 
-                <li>
+                <li style={{"cursor": "pointer"}}>
                   <a
                     className="dropdown-item d-flex align-items-center"
                     onClick={logOut}

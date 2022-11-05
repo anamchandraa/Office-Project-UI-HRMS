@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+
 
 const AllEmployees = () => {
     const [data, setData] = React.useState([]);
 
 
     useEffect(() => {
-
+        fetchData();
+    },[]);
+      
+    const fetchData =() =>{
         var userData = localStorage.getItem("token");
 
         const t = JSON.parse(userData);
@@ -16,14 +19,14 @@ const AllEmployees = () => {
         };
 
         axios
-            .post("http://localhost:8080/Api/GetEmployee", {
+            .post("http://hrm.unibillapp.com:8080/Api/GetEmployee", {
                 "DepartmentId": 1
             }, config)
             .then((res) => {
                 setData(res.data.data)
                 console.log(res.data.data)
             })
-    })
+    }
 
     return (
 

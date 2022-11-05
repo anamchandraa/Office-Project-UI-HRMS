@@ -95,7 +95,7 @@ const LeaveRequest = () => {
                 headers: { Authorization: `Bearer ${t.Token}` }
             };
 
-            const resp = await axios.post("http://localhost:8080/Api/LeaveRequest", {
+            const resp = await axios.post("http://localhost:8080/Api/GetLeaveRequest", {
                 EmployeeId: t.UserId,
                 FromLeaveDate: inputtext.fromDate,
                 ToLeaveDate: inputtext.toDate,
@@ -164,6 +164,7 @@ const LeaveRequest = () => {
                                     <div class="invalid-feedback" style={{ display: "block" }}>{warnrequirdLeaveType}</div>
                                 </div>
                             </div>
+                            
 
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Is Paid</label>

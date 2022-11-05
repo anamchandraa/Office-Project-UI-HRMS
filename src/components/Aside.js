@@ -28,7 +28,7 @@ const Aside = () => {
             <li className="nav-item">
               <a
                 className="nav-link collapsed"
-                data-bs-target="#components-nav"
+                data-bs-target="#components-nav-employee"
                 data-bs-toggle="collapse"
                 href="#"
               >
@@ -37,7 +37,7 @@ const Aside = () => {
                 <i className="bi bi-chevron-down ms-auto" />
               </a>
               <ul
-                id="components-nav"
+                id="components-nav-employee"
                 className="nav-content collapse "
                 data-bs-parent="#sidebar-nav"
               >
@@ -107,7 +107,7 @@ const Aside = () => {
             <li className="nav-item">
               <a
                 className="nav-link collapsed"
-                data-bs-target="#components-nav"
+                data-bs-target="#components-nav-attendence"
                 data-bs-toggle="collapse"
                 href="#"
               >
@@ -116,7 +116,7 @@ const Aside = () => {
                 <i className="bi bi-chevron-down ms-auto" />
               </a>
               <ul
-                id="components-nav"
+                id="components-nav-attendence"
                 className="nav-content collapse "
                 data-bs-parent="#sidebar-nav"
               >
@@ -149,7 +149,7 @@ const Aside = () => {
             <li className="nav-item">
               <a
                 className="nav-link collapsed"
-                data-bs-target="#components-nav"
+                data-bs-target="#components-nav-leave"
                 data-bs-toggle="collapse"
                 href="#"
               >
@@ -158,7 +158,7 @@ const Aside = () => {
                 <i className="bi bi-chevron-down ms-auto" />
               </a>
               <ul
-                id="components-nav"
+                id="components-nav-leave"
                 className="nav-content collapse "
                 data-bs-parent="#sidebar-nav"
               >
@@ -188,7 +188,7 @@ const Aside = () => {
             <li className="nav-item">
               <a
                 className="nav-link collapsed"
-                data-bs-target="#components-nav"
+                data-bs-target="#components-nav-salary"
                 data-bs-toggle="collapse"
                 href="#"
               >
@@ -197,7 +197,7 @@ const Aside = () => {
                 <i className="bi bi-chevron-down ms-auto" />
               </a>
               <ul
-                id="components-nav"
+                id="components-nav-salary"
                 className="nav-content collapse "
                 data-bs-parent="#sidebar-nav"
               >

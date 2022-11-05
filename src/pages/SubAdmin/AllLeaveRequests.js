@@ -39,7 +39,7 @@ const AllLeaveRequests = () => {
         }
         debugger
 
-        axios.post("http://localhost:8080/Api/GetLeaveRequest", {
+        axios.post("http://hrm.unibillapp.com:8080/Api/GetLeaveRequest", {
             "MonthandYear": dataFor
         }, config)
             .then((res) => {
@@ -63,7 +63,13 @@ const AllLeaveRequests = () => {
 
     useEffect(() => {
 
-        var userData = localStorage.getItem("token");
+        fecthLeaveDat()
+        
+    },[])
+
+function fecthLeaveDat()
+{
+    var userData = localStorage.getItem("token");
 
         const t = JSON.parse(userData);
         const config = {
@@ -75,14 +81,14 @@ const AllLeaveRequests = () => {
 
         }
 
-        axios.post("http://localhost:8080/Api/GetLeaveRequest", {
-            "MonthandYear": dataFor
+        axios.post("http://hrm.unibillapp.com:8080/Api/GetLeaveRequest", {
+            "MonthandYear": "2022-11"
         }, config)
             .then((res) => {
                 setData(res.data.data)
                 console.log(res.data.data)
             })
-    })
+}
 
     return (
 

@@ -51,7 +51,7 @@ const Login = ({ setUser }) => {
 
   async function loginUser(phoneNumberOrEmail, password, type) {
     try {
-      const resp = await axios.post("http://localhost:8080/Api/Login", {
+      const resp = await axios.post("http://hrm.unibillapp.com:8080/Api/Login", {
         Type: type,
         User: phoneNumberOrEmail,
         Password: password
