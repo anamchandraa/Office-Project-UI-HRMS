@@ -18,6 +18,8 @@ import EmployeeInOutDetails from "./pages/SubAdmin/EmployeeInOutDetails";
 import AllEmployeeAttendence from "./pages/SubAdmin/AllEmployeeAttendence";
 import LeaveApproval from "./pages/LeaveApproval";
 import AllLeaveRequests from "./pages/SubAdmin/AllLeaveRequests";
+import GetAttendenceRequest from "./pages/SubAdmin/GetAttendenceRequest";
+import {TimeoutLogic} from "./components/TimeoutLogic";
 
 
 
@@ -33,9 +35,13 @@ function App() {
         </Route>
 
         <Route element={<SharedLayout user={user} />}>
+       
           <Route path='dashboard' element={
             // <ProtectedRoute user={user}>
-            <Dashboard />
+            <Dashboard>
+              
+            </Dashboard>
+            
             // </ProtectedRoute>
           } />
 
@@ -56,10 +62,16 @@ function App() {
             <LeaveRequest />
             // </ProtectedRoute>
           } />
-          
+
           <Route path='leave-request' element={
             // <ProtectedRoute user={user}>
             <LeaveApproval />
+            // </ProtectedRoute>
+          } />
+
+          <Route path='user-attendance-request' element={
+            // <ProtectedRoute user={user}>
+            <GetAttendenceRequest />
             // </ProtectedRoute>
           } />
 
@@ -76,65 +88,67 @@ function App() {
             // </ProtectedRoute>
           } />
 
-        <Route path='add-Employee' element={
+          <Route path='add-Employee' element={
             // <ProtectedRoute user={user}>
-            <AddEmployee/>
+            <AddEmployee />
             // </ProtectedRoute>
           } >
+
+          </Route>
+
+          <Route path='remove-Employee' element={
+            // <ProtectedRoute user={user}>
+            <RemoveEmployee />
+            // </ProtectedRoute>
+          } >
+
+          </Route>
+
+          <Route path='all-Employee' element={
+            // <ProtectedRoute user={user}>
+            <AllEmployees />
+            // </ProtectedRoute>
+          } >
+
+          </Route>
+
+          <Route path='in-out-details' element={
+            // <ProtectedRoute user={user}>
+            <EmployeeInOutDetails />
+            // </ProtectedRoute>
+          } >
+
+          </Route>
+
+          <Route path='all-employees-attendence' element={
+            // <ProtectedRoute user={user}>
+            <AllEmployeeAttendence />
+            // </ProtectedRoute>
+          } >
+
+          </Route>
+
+          <Route path='all-leaves-requests' element={
+            // <ProtectedRoute user={user}>
+            <AllLeaveRequests />
+            // </ProtectedRoute>
+          } >
+
+          </Route>
+
+
+
+
 
         </Route>
 
-        <Route path='remove-Employee' element={
-            // <ProtectedRoute user={user}>
-            <RemoveEmployee/>
-            // </ProtectedRoute>
-          } >
 
-        </Route>
-
-        <Route path='all-Employee' element={
-            // <ProtectedRoute user={user}>
-            <AllEmployees/>
-            // </ProtectedRoute>
-          } >
-
-        </Route> 
-
-        <Route path='in-out-details' element={
-            // <ProtectedRoute user={user}>
-            <EmployeeInOutDetails/>
-            // </ProtectedRoute>
-          } >
-
-        </Route>  
-
-        <Route path='all-employees-attendence' element={
-            // <ProtectedRoute user={user}>
-            <AllEmployeeAttendence/>
-            // </ProtectedRoute>
-          } >
-
-        </Route> 
-
-        <Route path='all-leaves-requests' element={
-            // <ProtectedRoute user={user}>
-            <AllLeaveRequests/>
-            // </ProtectedRoute>
-          } >
-
-        </Route>  
-
-       
-
-        </Route>
-
-        
 
         <Route path='view-Attendence' element={
-            // <ProtectedRoute user={user}>
-            <ViewAttendence/>
-            // </ProtectedRoute>
-          } >
+          // <ProtectedRoute user={user}>
+          <ViewAttendence />
+          // </ProtectedRoute>
+        } >
 
         </Route>
 

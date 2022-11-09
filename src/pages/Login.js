@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { APIUrl } from '../constants/Global'
 import './Login.css';
 
 const Login = ({ setUser }) => {
@@ -28,7 +29,7 @@ const Login = ({ setUser }) => {
   const navigate = useNavigate();
 
   const handleSubmit = async e => {
-    
+
     e.preventDefault();
     if (!phoneNumberOrEmail || !password) {
       setMessage("Please enter valid credentials.");
@@ -51,7 +52,7 @@ const Login = ({ setUser }) => {
 
   async function loginUser(phoneNumberOrEmail, password, type) {
     try {
-      const resp = await axios.post("http://hrm.unibillapp.com:8080/Api/Login", {
+      const resp = await axios.post(APIUrl + "/Login", {
         Type: type,
         User: phoneNumberOrEmail,
         Password: password
@@ -64,7 +65,7 @@ const Login = ({ setUser }) => {
   };
 
   function GetPhoneNumberOrEmail(e) {
-    
+
     if (type === "PhoneNumber") {
       const re = /^[0-9\b]+$/;
 
@@ -131,9 +132,9 @@ const Login = ({ setUser }) => {
                         <label for="login" class="slide login">Email</label>
                         <label for="signup" class="slide signup">Mobile</label>
                         <div class="slider-tab"></div>
-                       </div>
+                      </div>
 
-                       <form class="row g-3 needs-validation" onSubmit={handleSubmit}>
+                      <form class="row g-3 needs-validation" onSubmit={handleSubmit}>
                         <div class="col-12">
                           <label for="yourUsername" class="form-label">{loginTypeText}</label>
                           <div class="input-group has-validation">
@@ -169,7 +170,7 @@ const Login = ({ setUser }) => {
                             className={`bi ${eye ? "bi-eye-slash" : "bi-eye"} eye-icon`}
                           />
                         </div>
-                        <div class="col-12" style={{alignmentitem:'right'}}>
+                        <div class="col-12" style={{ alignmentitem: 'right' }}>
                           <p class="small mb-0"><a href="pages-register.html">Forgot password?</a></p>
 
 
@@ -200,7 +201,7 @@ const Login = ({ setUser }) => {
                             <label class="form-check-label" for="rememberMe">Remember me</label>
                           </div>
                         </div>
-                      <div class="col-12">
+                        <div class="col-12">
                           <button class="btn btn-primary w-100" type="submit">Login</button>
 
                         </div>

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-
+import { APIUrl, getToken } from '../../constants/Global'
 
 const AllEmployees = () => {
     const [data, setData] = React.useState([]);
@@ -11,17 +11,10 @@ const AllEmployees = () => {
     },[]);
       
     const fetchData =() =>{
-        var userData = localStorage.getItem("token");
 
-        const t = JSON.parse(userData);
-        const config = {
-            headers: { Authorization: `Bearer ${t.Token}` }
-        };
-
-        axios
-            .post("http://hrm.unibillapp.com:8080/Api/GetEmployee", {
+        axios.post(APIUrl+"/GetEmployee", {
                 "DepartmentId": 1
-            }, config)
+            }, getToken())
             .then((res) => {
                 setData(res.data.data)
                 console.log(res.data.data)

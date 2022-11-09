@@ -376,9 +376,9 @@ const AddEmployee = () =>{
                       <input type="date" class="form-control"/>
                     
                   </div>
+                
                   
                 
-   
                 </div>
                 <div class="col-md-6">
                   <label for="inputEmail5" class="form-label">Email</label>

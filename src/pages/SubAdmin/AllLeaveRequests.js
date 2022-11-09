@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { APIUrl, getToken } from '../../constants/Global'
 import Moment from "react-moment";
 
 const AllLeaveRequests = () => {
@@ -9,14 +9,10 @@ const AllLeaveRequests = () => {
     const [month, setMonth] = React.useState("all");
     const [year, setYear] = React.useState("all");
 
-
     const selectMonth = (event) => {
         setMonth(event.target.value);
         setDataFor(year + "-" + event.target.value);
-
-
     }
-
 
     const selectYear = (event) => {
         setYear(event.target.value);
@@ -24,74 +20,74 @@ const AllLeaveRequests = () => {
 
     }
 
-
     const searchData = () => {
+
+        if (month === "all" && year === "all") {
+            setDataFor("all");
+
+        }
+        axios.post(APIUrl + "/GetLeaveRequest", {
+            "MonthandYear": dataFor
+        }, getToken())
+            .then((res) => {
+                setData(res.data.data)
+
+            })
+            .then(data => {
+                console.log(data)
+            })
+            .catch(error => {
+                setData([])
+            })
+    }
+
+    useEffect(() => {
+        fecthLeaveDat()
+    }, [])
+
+    function fecthLeaveDat() {
         var userData = localStorage.getItem("token");
 
         const t = JSON.parse(userData);
         const config = {
-            headers: { Authorization: `Bearer ${t.Token}` }
+            headers: { Authorization: `Bearer ${t.data.Token}` }
         };
 
         if (month === "all" && year === "all") {
             setDataFor("all");
-
-        }
-        debugger
-
-        axios.post("http://hrm.unibillapp.com:8080/Api/GetLeaveRequest", {
-            "MonthandYear": dataFor
-        }, config)
-            .then((res) => {
-                debugger
-                
-                    setData(res.data.data)
-                   
-            })
-            .then(data => {
-                console.log(data)
-             })
-             .catch(error => {
-                setData([])
-             })
-
-           
-            
-    }
-
-
-
-    useEffect(() => {
-
-        fecthLeaveDat()
-        
-    },[])
-
-function fecthLeaveDat()
-{
-    var userData = localStorage.getItem("token");
-
-        const t = JSON.parse(userData);
-        const config = {
-            headers: { Authorization: `Bearer ${t.Token}` }
-        };
-
-        if (month === "all" && year === "all") {
-            setDataFor("all");
-
         }
 
-        axios.post("http://hrm.unibillapp.com:8080/Api/GetLeaveRequest", {
+        axios.post(APIUrl+"/GetLeaveRequest", {
             "MonthandYear": "2022-11"
-        }, config)
+        }, getToken())
             .then((res) => {
                 setData(res.data.data)
                 console.log(res.data.data)
             })
-}
+    }
+
+    const approveLeave = (id) => {
+debugger
+        axios.post(APIUrl+"/LeaveApprove", {
+            "LeaveId": id,
+            "IsApproved": true
+        }, getToken())
+            .then((res) => {
+                if(res.data.code === 1)
+                {
+                    alert(res.data.message)
+                    window.location.href = "/all-leaves-requests";
+                }
+                else
+                {
+                    alert('Somthing went wrong check the API.')
+                }
+                
+            })
+
+    }
 
     return (
-
         <main id="main" class="main">
             <section className="section">
                 <div class="pagetitle">
@@ -99,14 +95,11 @@ function fecthLeaveDat()
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item">Employees</li>
+                            <li class="breadcrumb-item">Leave Request</li>
                             <li class="breadcrumb-item active">All</li>
                         </ol>
                     </nav>
                 </div>
-              
-
-
 
                 <div className="col-sm-12">
                 </div>
@@ -163,24 +156,16 @@ function fecthLeaveDat()
                     </div>
                 </div>
 
-
             </section>
 
-           
-
-
-
             <br />
-
-
-
 
             <section class="section">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Employees</h5>
+                                <h5 class="card-title">Leave Request</h5>
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -195,7 +180,6 @@ function fecthLeaveDat()
                                             <th scope="col">Type</th>
                                             <th scope="col">Reason</th>
                                             <th scope="col">Action</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -211,16 +195,16 @@ function fecthLeaveDat()
                                                         <td><Moment format='MMM Do YYYY'>{d.Applieddate}</Moment></td>
                                                         <td><Moment format='MMM Do YYYY'>{d.FromLeaveDate}</Moment></td>
                                                         <td><Moment format='MMM Do YYYY'>{d.ToLeaveDate}</Moment></td>
-                                                        <td>{d.LeaveStatus === "Approved" && <span class="badge bg-success dropdown-toggle">{d.LeaveStatus}</span>}
-                                                            {d.LeaveStatus === "Applied" && <span class="badge bg-primary dropdown-toggle">{d.LeaveStatus}</span>}
-                                                            {d.LeaveStatus === "Reject" && <span class="badge bg-danger dropdown-toggle">{d.LeaveStatus}</span>}
+                                                        <td>{d.LeaveStatus === "Approved" && <span class="badge bg-success">{d.LeaveStatus}</span>}
+                                                            {d.LeaveStatus === "Applied" && <span class="badge bg-primary">{d.LeaveStatus}</span>}
+                                                            {d.LeaveStatus === "Reject" && <span class="badge bg-danger">{d.LeaveStatus}</span>}
 
 
                                                         </td>
                                                         <td>{d.LeaveType}</td>
                                                         <td>{d.LeaveReason}</td>
                                                         <td>
-                                                            {d.LeaveStatus === "Applied" && <button className="btn btn-success">Approve</button>}
+                                                            {d.LeaveStatus === "Applied" && <button className="btn btn-success" onClick={() => approveLeave(d.RequestId)}>Approve</button>}
                                                         </td>
                                                     </tr>
 

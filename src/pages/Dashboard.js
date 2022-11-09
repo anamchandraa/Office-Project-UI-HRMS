@@ -1,15 +1,19 @@
+import moment from "moment";
+
+
 const Dashboard = () => {
 
   var userData = localStorage.getItem("token");
 
   const t = JSON.parse(userData);
 
-  if (t.UserType == "SubAdmin") {
+  if (t.data.UserType == "SubAdmin") {
     return (
 
 
 
       <div style={{ height: 500 }}>
+        
         <main id="main" classNameName="main">
           <div classNameName="pagetitle">
             <h1>Admin Dashboard</h1>
@@ -151,7 +155,7 @@ const Dashboard = () => {
     )
   }
 
-  else if (t.UserType == "Employee") {
+  else if (t.data.UserType == "Employee") {
     return (
       <div style={{ height: 500 }}>
         <main id="main" classNameName="main">
@@ -175,3 +179,5 @@ const Dashboard = () => {
   }
 };
 export default Dashboard;
+
+

@@ -1,13 +1,15 @@
+import {TimeoutLogic} from "../components/TimeoutLogic";
 const Aside = () => {
 
   var userData = localStorage.getItem("token");
 
   const t = JSON.parse(userData);
 
-  if (t.UserType == "SubAdmin") {
+  if (t.data.UserType == "SubAdmin") {
     return (
-    
+
       <div>
+         <TimeoutLogic/>
         <aside id="sidebar" className="sidebar">
           <ul className="sidebar-nav" id="sidebar-nav">
             <li className="nav-item">
@@ -62,7 +64,7 @@ const Aside = () => {
                     <span> All Employee</span>
                   </a>
                 </li>
-               
+
 
                 <li>
                   <a href="all-employees-attendence">
@@ -120,15 +122,15 @@ const Aside = () => {
                 className="nav-content collapse "
                 data-bs-parent="#sidebar-nav"
               >
-                <li>
+                {/* <li>
                   <a href="view-attendence">
                     <i className="bi bi-circle" />
                     <span>View User Attendence</span>
                   </a>
-                </li>
+                </li> */}
 
                 <li>
-                  <a href="components-alerts.html">
+                  <a href="/user-attendance-request">
                     <i className="bi bi-circle" />
                     <span> User Attendance Request</span>
                   </a>
@@ -245,9 +247,9 @@ const Aside = () => {
 
 
 
-}
+  }
 
-  if (t.UserType == "Employee") {
+  if (t.data.UserType == "Employee") {
     return (
       <div>
         <aside id="sidebar" className="sidebar">

@@ -17,7 +17,7 @@ const AllEmployeeAttendence = () => {
 
         const t = JSON.parse(userData);
         const config = {
-            headers: { Authorization: `Bearer ${t.Token}` }
+            headers: { Authorization: `Bearer ${t.data.Token}` }
         };
 
         axios
@@ -83,6 +83,7 @@ const AllEmployeeAttendence = () => {
                             <option>2018</option>
                             <option>2017</option>
                         </select>
+                        
                     </div>
                     <div className="col-sm-6 col-md-2">
                         <a href="#" className="btn btn-success btn-block w-100"> Search </a>
@@ -235,7 +236,7 @@ const AllEmployeeAttendence = () => {
                                                                                 }
 
 
-
+                                                                                
 
                                                                                 activities.push(<div key={j}>
 
@@ -305,6 +306,10 @@ const AllEmployeeAttendence = () => {
                                                                                                                                 activities = []
                                                                                                                             }
 
+                                                                                                                            
+
+                                                                                                                    
+
 
 
 
@@ -362,6 +367,3 @@ const AllEmployeeAttendence = () => {
 export default AllEmployeeAttendence;
 
 
-<div>
-    <button className="btn btn-submit" value="submit">submit</button>
-</div>
