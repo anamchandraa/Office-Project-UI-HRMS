@@ -1,9 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import * as moment from 'moment'
 
+
 const AllEmployeeAttendence = () => {
     const [data, setData] = React.useState([]);
+
+    // const [data2,setData2]=useState([]);
+
+    
 
 
     useEffect(() => {
@@ -25,10 +30,37 @@ const AllEmployeeAttendence = () => {
                 "MonthandYear": "2022-11"
             }, config)
             .then((res) => {
+                
+                
+
+            //     console.log(res.data.data[0].Attendance);
+            //     // let array=res.data.data[0].Attendance
+            //     setData2(res.data.data[0].Attendance);
+            //     let ts=data2.map(ele=>ele.Attendance);
+            //     console.log(ts);
+
+            //     let fir=ts[3];
+            //     console.log(fir);
+
+            //     let dr=fir.map(ele=>ele.WorkingHours);
+            //     console.log(dr[0]);
+
+            //     let lengt=dr[0];
+            //     let f=moment(lengt).format("hh-mm")
+
+
+            //    console.log(f);
+
+
+              
                 setData(res.data.data)
             })
 
     }
+
+    
+
+    
 
     return (
 
@@ -41,6 +73,7 @@ const AllEmployeeAttendence = () => {
                             <li className="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                             <li className="breadcrumb-item">Employees</li>
                             <li className="breadcrumb-item active">All</li>
+                            
                         </ol>
                     </nav>
                 </div>
@@ -55,6 +88,7 @@ const AllEmployeeAttendence = () => {
 
                         </div>
                     </div>
+                    
 
                     <div className="col-sm-6 col-md-3">
                         <select class="form-select" aria-label="Default select example">
@@ -83,7 +117,7 @@ const AllEmployeeAttendence = () => {
                             <option>2018</option>
                             <option>2017</option>
                         </select>
-                        
+
                     </div>
                     <div className="col-sm-6 col-md-2">
                         <a href="#" className="btn btn-success btn-block w-100"> Search </a>
@@ -151,7 +185,7 @@ const AllEmployeeAttendence = () => {
 
                                                                 countLeave = Object.keys(d.leave).length;
                                                                 leaveData = d.leave;
-                                                                
+
                                                             })
 
                                                             for (let i = 1; i <= 31; i++) {
@@ -167,8 +201,7 @@ const AllEmployeeAttendence = () => {
                                                                         colorCircle = "yellow"
                                                                         break;
                                                                     }
-                                                                    else
-                                                                    {
+                                                                    else {
                                                                         leaveTitle = "Absent";
                                                                         colorCircle = "red"
                                                                     }
@@ -176,13 +209,13 @@ const AllEmployeeAttendence = () => {
                                                                 }
 
                                                                 i = "1" ? rows.push(<td className="ri-close-circle-fill" title={leaveTitle}
-                                                                style={{ width: "20px", color: colorCircle }} id={d.EmployeeName + "_" + i} key={i}> </td>) : rows.push(<td style={{ width: "20px" }} id={d.EmployeeName + "_" + i} key={i}></td>)
+                                                                    style={{ width: "20px", color: colorCircle }} id={d.EmployeeName + "_" + i} key={i}> </td>) : rows.push(<td style={{ width: "20px" }} id={d.EmployeeName + "_" + i} key={i}></td>)
                                                             }
 
                                                             data.map((d, i) => {
 
                                                                 const count = Object.keys(d.Attendance).length;
-                                                                
+
 
                                                                 for (let i = 0; i <= count; i++) {
 
@@ -210,8 +243,8 @@ const AllEmployeeAttendence = () => {
                                                                         }
 
 
-                                                                       
 
+                                                                        var WorkingHours = 0;
                                                                         let activities = [];
                                                                         if (dailyCheckInOut != null && dailyCheckInOut != undefined) {
 
@@ -233,10 +266,18 @@ const AllEmployeeAttendence = () => {
                                                                                         outTime = moment(dailyCheckInOut[j].OutTime).utc().format('LTS');
                                                                                         outLocation = dailyCheckInOut[j].OutLocation
                                                                                     }
+
+                                                                                    if (dailyCheckInOut[j].WorkingHours != null && dailyCheckInOut[j].WorkingHours != undefined) {
+                                                                                        
+                                                                                        // const WkHrs = Moment(dailyCheckInOut[j].WorkingHours)
+                                                                                        // WorkingHours = WorkingHours + WkHrs.hours();
+
+                                                                                        WorkingHours = WorkingHours + dailyCheckInOut[j].WorkingHours;
+                                                                                    }
                                                                                 }
 
 
-                                                                                
+
 
                                                                                 activities.push(<div key={j}>
 
@@ -268,7 +309,7 @@ const AllEmployeeAttendence = () => {
                                                                         const col = <td id={d.EmployeeName + "_" + day} key={day}>
                                                                             <button style={{ border: "none", background: "white" }} type="button" data-bs-toggle="modal" data-bs-target={"#basicModal" + "_" + day}>
                                                                                 <i style={{ width: "20px", color: color }} className="ri-checkbox-circle-fill" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                                   title={title} ></i>
+                                                                                    title={title} ></i>
                                                                             </button>
                                                                             <div class="modal fade" id={"basicModal" + "_" + day} tabindex="-1" style={{ display: "none" }} aria-hidden="true">
                                                                                 <div class="modal-dialog modal-lg">
@@ -306,11 +347,12 @@ const AllEmployeeAttendence = () => {
                                                                                                                                 activities = []
                                                                                                                             }
 
+
+
                                                                                                                             
 
-                                                                                                                    
 
-
+                                                                                                                            <span><b>Working Hours:</b> {WorkingHours}</span>
 
 
 
@@ -360,7 +402,7 @@ const AllEmployeeAttendence = () => {
                 </div>
             </section >
         </main >
-        
+
 
     )
 };

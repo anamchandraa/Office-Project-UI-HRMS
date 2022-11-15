@@ -16,8 +16,12 @@ const AllEmployees = () => {
                 "DepartmentId": 1
             }, getToken())
             .then((res) => {
+                console.log(res.data.data[0]);
+                
+                
                 setData(res.data.data)
-                console.log(res.data.data)
+                // console.log(res.data.data);
+
             })
     }
 
@@ -116,7 +120,7 @@ const AllEmployees = () => {
                                             <th scope="col">Name</th>
                                             <th scope="col">Position</th>
                                             <th scope="col">Manager</th>
-                                            <th scope="col">Photo</th>
+                                            {/* <th scope="col">Photo</th> */}
                                             <th scope="col">In/Out Details</th>
                                         </tr>
                                     </thead>
@@ -130,7 +134,7 @@ const AllEmployees = () => {
                                                         <td>{d.EmployeeName}</td>
                                                         <td>{d.JobTitle}</td>
                                                         <td>{d.ReportingManager}</td>
-                                                        <td>{d.Photo}</td>
+                                                        {/* <td>{d.Photo}</td> */}
                                                         <td><a href={"in-out-details?id=" + d.EmployeeId}>View</a></td>
                                                     </tr>
 

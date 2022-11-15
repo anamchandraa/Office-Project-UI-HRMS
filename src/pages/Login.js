@@ -52,6 +52,7 @@ const Login = ({ setUser }) => {
 
   async function loginUser(phoneNumberOrEmail, password, type) {
     try {
+      debugger
       const resp = await axios.post(APIUrl + "/Login", {
         Type: type,
         User: phoneNumberOrEmail,

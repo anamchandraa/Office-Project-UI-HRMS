@@ -68,11 +68,12 @@ const AllLeaveRequests = () => {
 
     const approveLeave = (id) => {
 debugger
-        axios.post(APIUrl+"/LeaveApprove", {
+        axios.post(APIUrl+"/ApproveLeave", {
             "LeaveId": id,
             "IsApproved": true
         }, getToken())
             .then((res) => {
+                debugger
                 if(res.data.code === 1)
                 {
                     alert(res.data.message)
@@ -82,7 +83,8 @@ debugger
                 {
                     alert('Somthing went wrong check the API.')
                 }
-                
+
+                window.location.href = "/all-leaves-requests";
             })
 
     }
@@ -204,13 +206,14 @@ debugger
                                                         <td>{d.LeaveType}</td>
                                                         <td>{d.LeaveReason}</td>
                                                         <td>
-                                                            {d.LeaveStatus === "Applied" && <button className="btn btn-success" onClick={() => approveLeave(d.RequestId)}>Approve</button>}
+                                                            {d.LeaveStatus === "Applied" && <button className="btn btn-success"  onClick={() => approveLeave(d.RequestId)}>Approve</button>}
                                                         </td>
                                                     </tr>
 
                                                 );
                                             })
                                         }
+                                        
 
                                     </tbody>
                                 </table>

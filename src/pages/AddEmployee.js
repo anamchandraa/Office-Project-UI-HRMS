@@ -1,443 +1,725 @@
+import { isValidDateValue } from "@testing-library/user-event/dist/utils";
 import axios from "axios";
-import React,{useeffect} from "react";
+import React, { useeffect } from "react";
+import { useState } from "react";
+import { APIUrl, getToken } from '../constants/Global'
+
+const AddEmployee = () => {
+
+
+  const [firstname, setFirstName] = useState("");
+  const [firstnamevalidation, setFirstNameValidation] = useState("form-control");
+
+  const [lastname, setLastName] = useState("");
+  const [lastnamevalidation, setLastNameValidation] = useState("form-control");
+
+  const [email, setEmail] = useState("");
+  const [emailvalidation, setEmailValidation] = useState("form-control");
+
+
+  const [workemail, setWorkEmail] = useState("");
+  const [workemailvalidation, setWorkEmailValidation] = useState("form-control");
+
+
+  const [password, setPassword] = useState("");
+  const [passwordvalidation, setPasswordValidation] = useState("form-control");
+
+  const [phonenumber, setPhoneNumber] = useState("");
+  const [phonenumbervalidation, setPhoneNumberValidation] = useState("form-control");
+
+
+  const [alternatephonenumber, setAlternatePhoneNumber] = useState("");
+  const [alternatephonenumbervalidation, setAlternatePhoneNumberValidation] = useState("form-control");
+
+
+  const [designation, SetDesignation] = useState("");
+  const [designationvalidation, setDesignationValidation] = useState("form-control");
 
 
 
-const AddEmployee = () =>{
+  const [employeetype, SetEmployeeType] = useState("");
+  const [employeetypevalidation, setEmployeeTypeValidation] = useState("form-control");
 
 
-    return(
-        <main id="main" classNameName="main">
+  const [dateofjoining, setDateOfJoining] = useState("");
+  const [dateofjoiningvalidation, setDateOfJoiningValidation] = useState("form-control");
+
+
+  const [inshift, setInshift] = useState("");
+  const [inshiftvalidation, setInShiftValidation] = useState("form-control");
+
+
+  const [outshift, setOutshift] = useState("");
+  const [outshiftvalidation, setOutShiftValidation] = useState("form-control");
+
+
+  const [gender, setGender] = useState("");
+  const [gendervalidation, setGenderValidation] = useState("form-control");
+
+
+  const [weekoff, setWeekoff] = useState("");
+  const [weekoffvalidation, setWeekOffValidation] = useState("form-control");
+
+
+  const [dateofbirth, setDateofBirth] = useState("");
+  const [dateofbirthvalidation, setDateOfBirthValidation] = useState("form-control");
+
+
+  const [departmentid, setDepartmentid] = useState("");
+  const [departmentidvalidation, setdepartmentIdValidation] = useState("form-control");
+
+
+  const [currentaddresshousenumber, SetCurrentAddressHouseNumber] = useState("");
+  const [currentaddresshousenumbervalidation, setCurrentAddressHouseNumberValidation] = useState("form-control");
+
+  const [currentaddressLine, setCurrentAddressLine] = useState("");
+  const [currentaddresslinevalidation, setCurrentAddressLineValidation] = useState("form-control");
+
+  const [currentaddressstate, setCurrentAddressState] = useState("");
+  const [currentaddressstatevalidation, setCurrentAddressStateValidation] = useState("form-control");
+
+  const [currentaddresscity, setCurrentaddressCity] = useState("");
+  const [currentaddresscityvalidation, setCurrentAddressCityValidation] = useState("form-control");
+
+  const [currentaddresszipcode, setCurrentAddressZipCode] = useState("");
+  const [currentaddresszipcodevalidation, setCurrentAddressZipCodeValidation] = useState("form-control");
+
+  const [permanentaddresshousenumber, setPermanentAddressHouseNumber] = useState("");
+  const [permanentaddresshousenumbervalidation, setPermanentAddressHouseNumberValidation] = useState("form-control");
+
+  const [permanentaddressLine, setPermanentAddressLine] = useState("");
+  const [permanentaddressLinevalidation, setPermanentAddressLineValidation] = useState("form-control");
+
+  const [permanentaddressstate, setPermanentAddressState] = useState("");
+  const [permanentaddressstatevalidation, setPermanentAddressStateValidation] = useState("form-control");
+
+  const [permanentaddresscity, setPermanentAddressCity] = useState("");
+  const [permanentaddresscityvalidation, setPermanentAddressCityValidation] = useState("form-control");
+
+  const [permanentaddresszipcode, setPermanentAddressZipCode] = useState("");
+  const [permanentaddresszipcodevalidation, setPermanentAddressZipCodeValidation] = useState("form-control");
+
+
+  const setValidation = () => {
+
+    var isFormValid = false;
+
+    if (firstname == "") {
+      isFormValid = false;
+      setFirstNameValidation("form-control add-validation");
+    }
+    else {
+      isFormValid = true;
+      setFirstNameValidation("form-control");
+    }
+
+    if (lastname == "") {
+      isFormValid = false;
+      setLastNameValidation("form-control add-validation");
+    }
+    else {
+      setLastNameValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (email == "") {
+      isFormValid = false;
+      setEmailValidation("form-control add-validation");
+    }
+    else {
+      setEmailValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (workemail == "") {
+      isFormValid = false;
+      setWorkEmailValidation("form-control add-validation");
+    }
+    else {
+      setWorkEmailValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (password == "") {
+      isFormValid = false;
+      setPasswordValidation("form-control add-validation");
+    }
+    else {
+      setPasswordValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (phonenumber == "") {
+      isFormValid = false;
+      setPhoneNumberValidation("form-control add-validation");
+    }
+    else {
+      setPhoneNumberValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (alternatephonenumber == "") {
+      isFormValid = false;
+      setAlternatePhoneNumberValidation("form-control add-validation");
+    }
+    else {
+      setAlternatePhoneNumberValidation("form-control");
+      isFormValid = true;
+    }
+
+
+    if (designation == "") {
+      isFormValid = false;
+      setDesignationValidation("form-control add-validation");
+    }
+    else {
+      setDesignationValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (employeetype == "") {
+      isFormValid = false;
+      setEmployeeTypeValidation("form-control add-validation");
+    }
+    else {
+      setEmployeeTypeValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (dateofjoining == "") {
+      isFormValid = false;
+      setDateOfJoiningValidation("form-control add-validation");
+    }
+    else {
+      setDateOfJoiningValidation("form-control");
+      isFormValid = true;
+    }
+    if (inshift == "") {
+      isFormValid = false;
+      setInShiftValidation("form-control add-validation");
+    }
+    else {
+      setInShiftValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (outshift == "") {
+      isFormValid = false;
+      setOutShiftValidation("form-control add-validation");
+    }
+    else {
+      setOutShiftValidation("form-control");
+      isFormValid = true;
+    }
+    if (gender == "") {
+      isFormValid = false;
+      setGenderValidation("form-control add-validation");
+    }
+    else {
+      setGenderValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (weekoff == "") {
+      isFormValid = false;
+      setWeekOffValidation("form-control add-validation");
+    }
+    else {
+      setWeekOffValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (dateofbirth == "") {
+      isFormValid = false;
+      setDateOfBirthValidation("form-control add-validation");
+    }
+    else {
+      setDateOfBirthValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (departmentid == "") {
+      isFormValid = false;
+      setdepartmentIdValidation("form-control add-validation");
+    }
+    else {
+      setdepartmentIdValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (currentaddresshousenumber == "") {
+      isFormValid = false;
+      setCurrentAddressHouseNumberValidation("form-control add-validation");
+    }
+    else {
+      setCurrentAddressHouseNumberValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (currentaddressLine == "") {
+      isFormValid = false;
+      setCurrentAddressLineValidation("form-control add-validation");
+    }
+    else {
+      setCurrentAddressLineValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (currentaddressstate == "") {
+      isFormValid = false;
+      setCurrentAddressStateValidation("form-control add-validation");
+    }
+    else {
+      setCurrentAddressStateValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (currentaddresscity == "") {
+      isFormValid = false;
+      setCurrentAddressCityValidation("form-control add-validation");
+    }
+    else {
+      setCurrentAddressCityValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (currentaddresszipcode == "") {
+      isFormValid = false;
+      setCurrentAddressZipCodeValidation("form-control add-validation");
+    }
+    else {
+      setCurrentAddressZipCodeValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (permanentaddresshousenumber == "") {
+      isFormValid = false;
+      setPermanentAddressHouseNumberValidation("form-control add-validation");
+    }
+    else {
+      setPermanentAddressHouseNumberValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (permanentaddressLine == "") {
+      isFormValid = false;
+      setPermanentAddressLineValidation("form-control add-validation");
+    }
+    else {
+      setPermanentAddressLineValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (permanentaddressstate == "") {
+      isFormValid = false;
+      setPermanentAddressStateValidation("form-control add-validation");
+    }
+    else {
+      setPermanentAddressStateValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (permanentaddresscity == "") {
+      isFormValid = false;
+      setPermanentAddressCityValidation("form-control add-validation");
+    }
+    else {
+      setPermanentAddressCityValidation("form-control");
+      isFormValid = true;
+    }
+
+    if (permanentaddresszipcode == "") {
+      isFormValid = false;
+      setPermanentAddressZipCodeValidation("form-control add-validation");
+    }
+    else {
+      setPermanentAddressZipCodeValidation("form-control");
+      isFormValid = true;
+    }
+
+    return isFormValid;
+  }
+
+
+  const handleSubmit = (event) => {
+    debugger
+    event.preventDefault();
+
+    var isFormValid = setValidation();
+
+    if (isFormValid) {
+
+      var wkoff = weekoff.split(",");
+
+      var weekData = "";
+      wkoff.forEach((day, index) => {
+          weekData = weekData + '"' + day + '"' + ","
+      });
+
+      weekData ='[' + weekData.slice(0,-1) + ']';
+      console.log(weekData);
+
+      axios.post(APIUrl + "/AddEmployee", {
+        "FirstName": firstname,
+        "LastName": lastname,
+        "EmailId": email,
+        "WorkingEmailId": workemail,
+        "Password": password,
+        "PhoneNumber": phonenumber,
+        "AlternatePhoneNumber": alternatephonenumber,
+        "Designation": designation,
+        "EmployeeType": employeetype,
+        "DateOfJoining": dateofjoining,
+        "InShift": inshift,
+        "OutShift": outshift,
+        "Gender": gender,
+        "Weekoff": ["Satuday","Sunday"],
+        "DateOfBirth": dateofbirth,
+        "DepartmentId": departmentid,
+        "CurrentAddresshouseno": currentaddresshousenumber,
+        "CurrentAddressline": currentaddressLine,
+        "CurrentAddressState": currentaddressstate,
+        "CurrentAddressCity": currentaddresscity,
+        "CurrentAddressZipCode": currentaddresszipcode,
+        "PermanentAddresshouseno": permanentaddresshousenumber,
+        "PermanentAddressline": permanentaddressLine,
+        "PermanentAddressState": permanentaddressstate,
+        "PermanentAddressZipCode": permanentaddresszipcode,
+        "PermanentAddressCity": permanentaddresscity
+      }
+        , getToken())
+        .then((res) => {
+          debugger
+          if (res.data.code === 1) {
+            window.location='/all-employee'
+          }
+
+          alert(res.data.message);
+        })
+        .then(data => {
+          debugger
+          console.log(data)
+        })
+        .catch(error => {
+          debugger
+          alert('Something went wrong check the API# ' + error);
+        })
+    }
+  }
+
+
+
+  return (
+    <div>
+
+      <main id="main" class="main">
+
+        <div class="pagetitle">
+          <h1>Add Employee</h1>
+          <nav>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+              <li class="breadcrumb-item">Employees</li>
+              <li class="breadcrumb-item active">Add Employee</li>
+            </ol>
+          </nav>
+        </div>
+
+
         <section class="section">
-        <div class="row">
-          <div class="col-lg-12">
-  
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Add Employee</h5>
-  
+          <br />
+          <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+              <div class="row">
+                <div class="col-lg-12">
 
-                
-                  {/* <div class="row mb-3">
-                    <label for="inputText" class="col-sm-2 col-form-label">Name</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control"/>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control"/>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                    <div class="col-sm-10">
-                      <input type="password" class="form-control"/>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="inputNumber" class="col-sm-2 col-form-label">Number</label>
-                    <div class="col-sm-10">
-                      <input type="number" class="form-control"/>
-                    </div>
-                  </div> */}
-
-             <form class="row g-3">
-                <div class="col-md-6">
-                  <label for="inputName5" class="form-label">First Name</label>
-                  <input type="text" class="form-control" id="inputName5"/>
-                </div>
-                <div class="col-md-6">
-                  <label for="inputName5" class="form-label">Last Name</label>
-                  <input type="text" class="form-control" id="inputName5"/>
-                </div>
-                <div class="col-md-6">
-                  <label for="inputEmail5" class="form-label">designation</label>
-                  <input type="email" class="form-control" id="inputEmail5"/>
-                </div>
-                <div class="col-md-6">
-                  <label for="inputPassword5" class="form-label">Number of week off days</label>
-                  <input type="password" class="form-control" id="inputPassword5"/>
-                </div>
-                <div class="col-6">
-                  <label for="inputAddress5" class="form-label">
-                  Department id</label>
-                  <input type="text" class="form-control" id="inputAddres5s" placeholder="text"/>
-                </div>
-                <div class="col-6">
-                  <label for="inputAddress2" class="form-label">manager id</label>
-                  <input type="text" class="form-control" id="inputAddress2" placeholder="text"/>
-                </div>
-                <div class="col-md-6">
-                  <label for="inputCity" class="form-label">working days</label>
-                  <input type="text" class="form-control" id="inputCity"/>
-                </div>
-                <div class="col-md-6">
-                  <label for="inputState" class="form-label">employee type</label>
-                  <select id="inputState" class="form-select">
-                    <option selected="">Choose...</option>
-                    <option>...</option>
-                  </select>
-                </div>
-                
-                <div class="col-md-6">
-                  <label for="inputState" class="form-label">employee type</label>
-                  <select id="inputState" class="form-select">
-                    <option selected="">Half Time...</option>
-                    <option>Full Time...</option>
-                  </select>
-                </div>
-                <br/>
-                
-                
-                  {/* <label for="inputZip" class="form-label"></label>
-                  <input type="text" class="form-control" id="inputZip"/>
-                </div> */}
-                {/* <div class="col-12">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck"/>
-                    <label class="form-check-label" for="gridCheck">
-                      Check me out
-                    </label>
-                  </div>
-                </div> */}
-                {/* <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <button type="reset" class="btn btn-secondary">Reset</button>
-                </div> */}
-              
-                  {/* <div class="row mb-3">
-                    <label for="inputNumber" class="col-sm-2 col-form-label">File Upload</label>
-                    <div class="col-sm-10">
-                      <input class="form-control" type="file" id="formFile"/>
-                    </div>
-                  </div> */}
-                  <div class="row mb-3">
-                    <label for="inputDate" class="col-sm-2 col-form-label">Date of Joining</label>
-                    <div class="col-sm-10">
-                      <input type="date" class="form-control"/>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="inputTime" class="col-sm-2 col-form-label">Time</label>
-                    <div class="col-sm-10">
-                      <input type="time" class="form-control"/>
-                    </div>
-                  </div>
-  
-                  {/* <div class="row mb-3">
-                    <label for="inputColor" class="col-sm-2 col-form-label">Color Picker</label>
-                    <div class="col-sm-10">
-                      <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#4154f1" title="Choose your color"/>
-                    </div>
-                  </div> */}
-                  <div class="row mb-3">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Textarea</label>
-                    <div class="col-sm-10">
-                      <textarea class="form-control" style={{height:'100px'}}></textarea>
-                    </div>
-                  </div>
-                  <fieldset class="row mb-3">
-                    <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
-                    <div class="col-sm-10">
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked=""/>
-                        <label class="form-check-label" for="gridRadios1">
-                          Male
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2"/>
-                        <label class="form-check-label" for="gridRadios2">
-                          Female
-                        </label>
-                      </div>
-                      <div class="form-check disabled">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios" value="option" disabled=""/>
-                        <label class="form-check-label" for="gridRadios3">
-                          Other
-                        </label>
-                      </div>
-                    </div>
-                  </fieldset>
-                  <div class="row mb-3">
-                    <legend class="col-form-label col-sm-2 pt-0">Checkboxes</legend>
-                    <div class="col-sm-10">
-  
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck1"/>
-                        <label class="form-check-label" for="gridCheck1">
-                          Example checkbox
-                        </label>
-                      </div>
-  
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck2" checked=""/>
-                        <label class="form-check-label" for="gridCheck2">
-                          Example checkbox 2
-                        </label>
-                      </div>
-  
-                    </div>
-                  </div>
-  
-                  <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label">Disabled</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" value="Read only / Disabled" disabled=""/>
-                    </div>
-                  </div>
-  
-                  <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label">Shift</label>
-                    <div class="col-sm-10">
-                      <select class="form-select" aria-label="Default select example">
-                        <option selected="">Choose</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                      </select>
-                    </div>
-                  </div>
-  
-                  <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label">Multi Select</label>
-                    <div class="col-sm-10">
-                      <select class="form-select" multiple="" aria-label="multiple select example">
-                        <option selected="">Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-12">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck"/>
-                    <label class="form-check-label" for="gridCheck">
-                      Check me out
-                    </label>
-                  </div>
-                </div>
-
-  
-                  <div class="row mb-3">
-                    {/* <label class="col-sm-2 col-form-label">Submit Button</label> */}
-                    <div class="col-sm-2">
-                      <button type="submit" class="btn btn-primary">Submit Form</button>
-                    </div>
-                  </div>
-                  
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Add New Employee</h5>
 
 
+                      <form class="row g-3" onSubmit={handleSubmit}>
+                        <div class="col-12">
+                          <label for="TxtFirstName" class="form-label">First Name<span className="text-danger">*</span></label>
+                          <input type="text" class={firstnamevalidation} id="TxtFirstName" value={firstname}
+                            onChange={(e) => {
+                              setFirstName(e.target.value);
+                              setFirstNameValidation("form-control");
+                            }}
+                            placeholder="Enter First Name" />
+
+                        </div>
+                        <div class="col-12">
+                          <label for="TxtLastName" class="form-label">Last Name<span className="text-danger">*</span></label>
+                          <input type="text" class={lastnamevalidation} id="TxtLastName" value={lastname}
+                            onChange={(e) => {
+                              setLastName(e.target.value)
+                              setLastNameValidation("form-control");
+                            }} placeholder="Enter Last Name" />
+                        </div>
+                        <div class="col-12">
+                          <label for="TxtEmail" class="form-label">Email<span className="text-danger">*</span></label>
+                          <input type="email" class={emailvalidation} id="TxtEmail" value={email}
+                            onChange={(e) => {
+                              setEmail(e.target.value)
+                              setEmailValidation("form-control");
+                            }} placeholder="Enter Email" />
+                        </div>
+                        <div class="col-12">
+                          <label for="TxtWorkEmail" class="form-label">Work Email<span className="text-danger">*</span></label>
+                          <input type="email" class={workemailvalidation} id="TxtWorkEmail" value={workemail}
+                            onChange={(e) => {
+                              setWorkEmail(e.target.value)
+                              setWorkEmailValidation("form-control");
+                            }} placeholder="Enter Work Email" />
+                        </div>
+                        <div class="col-12">
+                          <label for="TxtPassword" class="form-label">Password<span className="text-danger">*</span></label>
+                          <input type="password" class={passwordvalidation} id="TxtPassword" value={password}
+                            onChange={(e) => {
+                              setPassword(e.target.value)
+                              setPasswordValidation("form-control");
+                            }} placeholder="Enter Password" />
+                        </div>
+                        <div class="col-12">
+                          <label for="TxtPhoneNumber" class="form-label">Phone Number</label>
+                          <input type="text" class={phonenumbervalidation} id="TxtPhoneNumber" placeholder="Enter Phone Number" value={phonenumber}
+                            onChange={(e) => {
+                              setPhoneNumber(e.target.value)
+                              setPhoneNumberValidation("form-control");
 
 
-  
-                </form>
-  
+                            }} />
+                        </div>
+                        <div class="col-12">
+                          <label for="TxtAlternatePhoneNumber" class="form-label">Alternate Phone Number<span className="text-danger">*</span></label>
+                          <input type="text" class={alternatephonenumbervalidation} id="TxtAlternatePhoneNumber" value={alternatephonenumber}
+                            onChange={(e) => {
+                              setAlternatePhoneNumber(e.target.value)
+                              setAlternatePhoneNumberValidation("form-control");
+
+
+                            }} placeholder="Enter Alternate Phone Number" />
+                        </div>
+
+                        <div class="col-12">
+                          <label for="DDLDesignation" class="form-label">Designation<span className="text-danger">*</span></label>
+                          <select class={designationvalidation} id="DDLDesignation" value={designation}
+                            onChange={(e) => {
+                              SetDesignation(e.target.value)
+                              setDesignationValidation("form-control")
+
+                            }}>
+                            <option value="">Select</option>
+                            <option value="CEO">CEO</option>
+                            <option value="Solution Architect">Solution Architect</option>
+                            <option value="Manager">Manager</option>
+                            <option value="HR">HR</option>
+                            <option value="Trainee">Trainee</option>
+                            <option value="Tester">Tester</option>
+                            <option value="Jr. Software Developer">Jr. Software Developer</option>
+                            <option value="Sr. Software Developer">Sr. Software Developer</option>
+                            <option value="Tech Lead">Tech Lead</option>
+                          </select>
+                        </div>
+                        <div class="col-12">
+                          <label for="DDLEmployeeType" class="form-label">Employee Type<span className="text-danger">*</span></label>
+                          <select class={employeetypevalidation} id="DDlEmployeeType" value={employeetype}
+                            onChange={(e) => {
+                              SetEmployeeType(e.target.value)
+                              setEmployeeTypeValidation("form-control")
+                            }}>
+                            <option value="">Select</option>
+                            <option value="Trainee">Trainee</option>
+                            <option value="Confirmed Employee">Confirmed Employee</option>
+                          </select>
+                        </div>
+                        <div class="col-12">
+                          <label for="TxtDateOfJoining" class="form-label">Date Of Joining<span className="text-danger">*</span></label>
+                          <input type="date" class={dateofjoiningvalidation} id="TxtDateOfJoining" value={dateofjoining}
+                            onChange={(e) => {
+                              setDateOfJoining(e.target.value)
+                              setDateOfJoiningValidation("form-control");
+                            }} />
+                        </div>
+
+                        <div class="col-12">
+                          <label for="TxtInShift" class="form-label">In Shift<span className="text-danger">*</span></label>
+                          <input type="time" class={inshiftvalidation} id="TxtInShift" value={inshift}
+                            onChange={(e) => {
+                              setInshift(e.target.value)
+                              setInShiftValidation("form-control")
+                            }} />
+                        </div>
+                        <div class="col-12">
+                          <label for="TxtOutShift" class="form-label">Out Shift<span className="text-danger">*</span></label>
+                          <input type="time" class={outshiftvalidation} id="TxtOutShift" value={outshift}
+                            onChange={(e) => {
+                              setOutshift(e.target.value)
+                              setOutShiftValidation("form-control")
+                            }} />
+                        </div>
+                        <div class="col-12">
+                          <label for="Gender" class="form-label">Gender<span className="text-danger">*</span></label>
+                          <select class={gendervalidation} id="gender" value={gender}
+                            onChange={(e) => {
+                              setGender(e.target.value)
+                              setGenderValidation("form-control")
+                            }}>
+                            <option value="">Select</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                          </select>
+                        </div>
+                        <div class="col-12">
+                          <label for="TxtWeekoff" class="form-label">Weekoff<span className="text-danger">*</span></label>
+                          <input type="text" class={weekoffvalidation} id="TxtWeekoff" value={weekoff}
+                            onChange={(e) => {
+                              setWeekoff(e.target.value)
+                              setWeekOffValidation("form-control");
+                            }}
+                            placeholder="Enter Week off" />
+                        </div>
+                        <div class="col-12">
+                          <label for="TxtDateOfbirth" class="form-label">Date Of Birth<span className="text-danger">*</span></label>
+                          <input type="date" class={dateofbirthvalidation} id="TxtDateOfbirth" placeholder="Enter Date Of birth" value={dateofbirth}
+                            onChange={(e) => {
+                              setDateofBirth(e.target.value)
+                              setDateOfBirthValidation("form-control");
+                            }} />
+                        </div>
+                        <div class="col-12">
+                          <label for="DDLDepartment" class="form-label">Department<span className="text-danger">*</span></label>
+                          <select class={departmentidvalidation} id="DDLDepartment" value={departmentid}
+                            onChange={(e) => {
+                              setDepartmentid(e.target.value)
+                              setdepartmentIdValidation("form-control")
+                            }}>
+                            <option value="">Select</option>
+                            <option value="1">HR</option>
+                            <option value="2">IT</option>
+                            <option value="3">Other</option>
+                          </select>
+                        </div>
+                        <div class="col-12">
+                          <label for="TxtCurrentAddressHouseNumber" class="form-label">Current Address House No.<span className="text-danger">*</span></label>
+                          <input type="text" class={currentaddresshousenumbervalidation} id="TxtCurrentAddressHouseNumber" value={currentaddresshousenumber}
+                            onChange={(e) => {
+                              SetCurrentAddressHouseNumber(e.target.value)
+                              setCurrentAddressHouseNumberValidation("form-control");
+
+                            }} placeholder="Enter Current Address House Number" />
+                        </div>
+
+                        <div class="col-12">
+                          <label for="TxtcurrentaddressLine" class="form-label">Current Address Line<span className="text-danger">*</span></label>
+                          <input type="text" class={currentaddresslinevalidation} id="TxtcurrentaddressLine" value={currentaddressLine}
+                            onChange={(e) => {
+                              setCurrentAddressLine(e.target.value)
+                              setCurrentAddressLineValidation("form-control")
+                            }}
+                            placeholder="Enter Current Address House Line" />
+                        </div>
+
+                        <div class="col-12">
+                          <label for="TxtCurrentAddressState" class="form-label">Current Address State<span className="text-danger">*</span></label>
+                          <input type="text" class={currentaddressstatevalidation} id="TxtCurrentAddressState" value={currentaddressstate}
+                            onChange={(e) => {
+                              setCurrentAddressState(e.target.value)
+                              setCurrentAddressStateValidation("form-control")
+                            }}
+                            placeholder="Enter Current Address State" />
+                        </div>
+                        <div class="col-12">
+                          <label for="TxtCurrentAddressCity" class="form-label">Current Address City<span className="text-danger">*</span></label>
+                          <input type="text" class={currentaddresscityvalidation} id="TxtCurrentAddressCity" value={currentaddresscity}
+                            onChange={(e) => {
+                              setCurrentaddressCity(e.target.value)
+                              setCurrentAddressCityValidation("form-control")
+                            }}
+                            placeholder="Enter Current Address City" />
+                        </div>
+                        <div class="col-12">
+                          <label for="TxtCurrentAddressZipCode" class="form-label">Current Address Zip Code<span className="text-danger">*</span></label>
+                          <input type="text" class={currentaddresszipcodevalidation} id="TxtCurrentAddressZipCode" value={currentaddresszipcode}
+                            onChange={(e) => {
+                              setCurrentAddressZipCode(e.target.value)
+                              setCurrentAddressZipCodeValidation("form-control")
+                            }} placeholder="Enter Current Address Zip Code" />
+                        </div>
+
+                        <div class="col-12">
+                          <label for="TxtPermanentAddressHouseNumber" class="form-label">Permanent Address House No.<span className="text-danger">*</span></label>
+                          <input type="text" class={permanentaddresshousenumbervalidation} id="TxtPermanentAddressHouseNumber" value={permanentaddresshousenumber}
+                            onChange={(e) => {
+                              setPermanentAddressHouseNumber(e.target.value)
+                              setPermanentAddressHouseNumberValidation("form-control")
+                            }} placeholder="Enter Permanent Address House Number" />
+                        </div>
+
+                        <div class="col-12">
+                          <label for="TxtPermanentaddressLine" class="form-label">Permanent Address Line<span className="text-danger">*</span></label>
+                          <input type="text" class={permanentaddressLinevalidation} id="TxtPermanentaddressLine" value={permanentaddressLine}
+                            onChange={(e) => {
+                              setPermanentAddressLine(e.target.value)
+                              setPermanentAddressLineValidation("form-control")
+                            }}
+                            placeholder="Enter Permanent Address House Line" />
+                        </div>
+
+                        <div class="col-12">
+                          <label for="TxtPermanentAddressState" class="form-label">Permanent Address State<span className="text-danger">*</span></label>
+                          <input type="text" class={permanentaddressstatevalidation} id="TxtPermanentAddressState" value={permanentaddressstate}
+                            onChange={(e) => {
+                              setPermanentAddressState(e.target.value)
+                              setPermanentAddressStateValidation("form-control")
+                            }} placeholder="Enter Permanent Address State" />
+                        </div>
+                        <div class="col-12">
+                          <label for="TxtPermanentAddressCity" class="form-label">Permanent Address City</label>
+                          <input type="text" class={permanentaddresscityvalidation} id="TxtPermanentAddressCity" value={permanentaddresscity}
+                            onChange={(e) => {
+                              setPermanentAddressCity(e.target.value)
+                              setPermanentAddressCityValidation("form-control")
+                            }} placeholder="Enter Permanent Address City" />
+                        </div>
+                        <div class="col-12">
+                          <label for="TxtPermanentAddressZipCode" class="form-label">Permanent Address Zip Code<span className="text-danger">*</span></label>
+                          <input type="text" class={permanentaddresszipcodevalidation} id="TxtPermanentAddressZipCode" value={permanentaddresszipcode}
+                            onChange={(e) => {
+                              setPermanentAddressZipCode(e.target.value)
+                              setPermanentAddressZipCodeValidation("form-control")
+                            }} placeholder="Enter Permanent Address Zip Code" />
+                        </div>
+
+                        <div class="text-center">
+                          <span>
+                            <button style={{ width: "200px" }} type="submit" class="btn btn-primary">Submit</button> {" "}
+                            <button style={{ width: "200px" }} type="reset" class="btn btn-secondary">Reset</button>
+                          </span>
+                        </div>
+                      </form>
+
+                    </div>
+                  </div>
+
+
+
+
+                </div>
               </div>
             </div>
-  
+            <div class="col-2"></div>
           </div>
-  
-          {/* <div class="col-lg-6">
-  
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Advanced Form Elements</h5>
-  
-            
-                <form>
-                  <div class="row mb-5">
-                    <label class="col-sm-2 col-form-label">Switches</label>
-                    <div class="col-sm-10">
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-                      </div>
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked=""/>
-                        <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
-                      </div>
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDisabled" disabled=""/>
-                        <label class="form-check-label" for="flexSwitchCheckDisabled">Disabled switch checkbox input</label>
-                      </div>
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckCheckedDisabled" checked="" disabled=""/>
-                        <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Disabled checked switch checkbox input</label>
-                      </div>
-                    </div>
-                  </div>
-  
-                  <div class="row mb-5">
-                    <label class="col-sm-2 col-form-label">Ranges</label>
-                    <div class="col-sm-10">
-                      <div>
-                        <label for="customRange1" class="form-label">Example range</label>
-                        <input type="range" class="form-range" id="customRange1"/>
-                      </div>
-                      <div>
-                        <label for="disabledRange" class="form-label">Disabled range</label>
-                        <input type="range" class="form-range" id="disabledRange" disabled=""/>
-                      </div>
-                      <div>
-                        <label for="customRange2" class="form-label">Min and max with steps</label>
-                        <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange2"/>
-                      </div>
-                    </div>
-                  </div>
-  
-                  <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label">Floating labels</label>
-                    <div class="col-sm-10">
-                      <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"/>
-                        <label for="floatingInput">Email address</label>
-                      </div>
-                      <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password"/>
-                        <label for="floatingPassword">Password</label>
-                      </div>
-                      <div class="form-floating mb-3">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 100px;"></textarea>
-                        <label for="floatingTextarea">Comments</label>
-                      </div>
-                      <div class="form-floating mb-3">
-                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                          <option selected="">Open this select menu</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                        <label for="floatingSelect">Works with selects</label>
-                      </div>
-                    </div>
-                  </div>
-  
-                  <div class="row mb-5">
-                    <label class="col-sm-2 col-form-label">Input groups</label>
-                    <div class="col-sm-10">
-                      <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">@</span>
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"/>
-                      </div>
-  
-                      <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
-                        <span class="input-group-text" id="basic-addon2">@example.com</span>
-                      </div>
-  
-                      <label for="basic-url" class="form-label">Your vanity URL</label>
-                      <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-                        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
-                      </div>
-  
-                      <div class="input-group mb-3">
-                        <span class="input-group-text">$</span>
-                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"/>
-                        <span class="input-group-text">.00</span>
-                      </div>
-  
-                      <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username"/>
-                        <span class="input-group-text">@</span>
-                        <input type="text" class="form-control" placeholder="Server" aria-label="Server"/>
-                      </div>
-  
-                      <div class="input-group">
-                        <span class="input-group-text">With textarea</span>
-                        <textarea class="form-control" aria-label="With textarea"></textarea>
-                      </div>
-                    </div>
-                  </div>
-  
-                </form>
-  
-              </div>
-            </div>
-  
-          </div> */}
 
-          <div class="card">
-              <div class="card-body">
-              <h5 class="card-title">Employee Info</h5>
-            
-        <form class="row g-3">
-                <div class="col-md-12">
-                  {/* <label for="inputName5" class="form-label">Your Name</label>
-                  <input type="text" class="form-control" id="inputName5"/> */}
+        </section>
 
 
-                    <label for="inputDate" class="col-sm-2 col-form-label">Date of </label>
-                    <div class="col-sm-10">
-                      <input type="date" class="form-control"/>
-                    
-                  </div>
-                
-                  
-                
-                </div>
-                <div class="col-md-6">
-                  <label for="inputEmail5" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="inputEmail5"/>
-                </div>
-                <div class="col-md-6">
-                  <label for="inputPassword5" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="inputPassword5"/>
-                </div>
-                <div class="col-12">
-                  <label for="inputAddress5" class="form-label">Address</label>
-                  <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St"/>
-                </div>
-                <div class="col-12">
-                  <label for="inputAddress2" class="form-label">Address 2</label>
-                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"/>
-                </div>
-                <div class="col-md-6">
-                  <label for="inputCity" class="form-label">City</label>
-                  <input type="text" class="form-control" id="inputCity"/>
-                </div>
-                <div class="col-md-4">
-                  <label for="inputState" class="form-label">State</label>
-                  <select id="inputState" class="form-select">
-                    <option selected="">Choose...</option>
-                    <option>...</option>
-                  </select>
-                </div>
-                <div class="col-md-2">
-                  <label for="inputZip" class="form-label">Zip</label>
-                  <input type="text" class="form-control" id="inputZip"/>
-                </div>
-                <div class="col-12">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck"/>
-                    <label class="form-check-label" for="gridCheck">
-                      Check me out
-                    </label>
-                  </div>
-                </div>
-                <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <br/>
-                  {/* <button type="reset" class="btn btn-secondary">Reset</button> */}
-                </div>
-              </form>
-        
-        </div>
-        </div>
-        </div>
-
-      </section>
       </main>
-
-
-
-
-
-    )
+    </div>
+  );
 }
 
 export default AddEmployee;

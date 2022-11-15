@@ -99,6 +99,7 @@ const GetAttendenceRequest = () => {
                                                             <td><Moment format='MMM Do YYYY'>{d.RequestDate}</Moment></td>
                                                             <td>
                                                                 {d.Status === "Applied" && <button className="btn btn-success">Approve</button>}
+                                                                
                                                             </td>
                                                             <td>{d.Requestremark}</td>
 
