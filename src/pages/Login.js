@@ -83,8 +83,6 @@ const Login = ({ setUser }) => {
     }
 
   }
-
-
   const Eye = () => {
 
     if (showPassword == "password") {
@@ -115,13 +113,8 @@ const Login = ({ setUser }) => {
                   </div>
 
                   <div class="card mb-3">
-
-                    <div class="card-body">
-
-
-
-
-                      <div class="pt-4 pb-2">
+                     <div class="card-body">
+                     <div class="pt-4 pb-2">
                         <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                         <p class="text-center small">Enter your {loginTypeText} and password to login</p>
                         <p class="text-center text-danger">{message}</p>
@@ -165,16 +158,13 @@ const Login = ({ setUser }) => {
                           {/* <div class="invalid-feedback">Please enter your password!</div> */}
 
                           <span onClick={Eye} class="fa fa-info-circle errspan"></span>
-
-                          <i
+                         <i
                             onClick={Eye}
                             className={`bi ${eye ? "bi-eye-slash" : "bi-eye"} eye-icon`}
                           />
                         </div>
                         <div class="col-12" style={{ alignmentitem: 'right' }}>
                           <p class="small mb-0"><a href="pages-register.html">Forgot password?</a></p>
-
-
                         </div>
                         {/* <div className="input-group mb-3">
                     <input type={password}
@@ -194,9 +184,7 @@ const Login = ({ setUser }) => {
                       </div>
                     </div>
                   </div>  */}
-
-
-                        <div class="col-12">
+                  <div class="col-12">
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe" />
                             <label class="form-check-label" for="rememberMe">Remember me</label>
@@ -222,12 +210,9 @@ const Login = ({ setUser }) => {
                 </div>
               </div>
             </div>
-
-          </section>
-
-        </div>
+             </section>
+             </div>
       </main>
-
       <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
     </div>
   );

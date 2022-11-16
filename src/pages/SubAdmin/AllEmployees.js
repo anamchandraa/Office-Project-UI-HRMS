@@ -27,9 +27,9 @@ const AllEmployees = () => {
 
     return (
 
-        <main id="main" class="main">
+        <main id="main" className="main">
                <section className="section">
-            <div class="pagetitle">
+            <div className="pagetitle">
                 <h1>All Employees</h1>
                 <nav>
                     <ol class="breadcrumb">
@@ -100,20 +100,20 @@ const AllEmployees = () => {
 
 
 
-            <section class="section">
-                <div class="row">
-                    <div class="col-lg-12">
+            <section className="section">
+                <div className="row">
+                    <div className="col-lg-12">
 
 
 
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Employees</h5>
+                        <div className="card">
+                            <div className="card-body">
+                                <h5 className="card-title">Employees</h5>
 
 
 
 
-                                <table class="table">
+                                <table className="table">
                                     <thead>
                                         <tr>
                                             <th scope="col">Id#</th>

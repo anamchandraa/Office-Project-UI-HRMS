@@ -8,18 +8,8 @@ const LeaveApproval =()=>{
         <div className="section">
             
             <h1>Leave Approve</h1>
-
-
-            
-            
-            
-        </div>
+            </div>
     )
-
 }
-
-        
-
-
 
 export default LeaveApproval;

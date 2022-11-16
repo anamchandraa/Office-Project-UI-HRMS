@@ -3,7 +3,6 @@
 const APIUrl = 'http://hrm.unibillapp.com:8080/Api'
 
 const getToken = () => {
-    
     var userData = localStorage.getItem("token");
 
     const t = JSON.parse(userData);
@@ -13,7 +12,4 @@ const getToken = () => {
 
     return config;
 }
-
-
-
 export { APIUrl, getToken } 

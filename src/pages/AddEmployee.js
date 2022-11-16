@@ -3,6 +3,8 @@ import axios from "axios";
 import React, { useeffect } from "react";
 import { useState } from "react";
 import { APIUrl, getToken } from '../constants/Global'
+ 
+
 
 const AddEmployee = () => {
 
@@ -406,15 +408,10 @@ const AddEmployee = () => {
         })
     }
   }
-
-
-
   return (
     <div>
-
       <main id="main" class="main">
-
-        <div class="pagetitle">
+      <div class="pagetitle">
           <h1>Add Employee</h1>
           <nav>
             <ol class="breadcrumb">
@@ -424,8 +421,6 @@ const AddEmployee = () => {
             </ol>
           </nav>
         </div>
-
-
         <section class="section">
           <br />
           <div class="row">
@@ -437,8 +432,6 @@ const AddEmployee = () => {
                   <div class="card">
                     <div class="card-body">
                       <h5 class="card-title">Add New Employee</h5>
-
-
                       <form class="row g-3" onSubmit={handleSubmit}>
                         <div class="col-12">
                           <label for="TxtFirstName" class="form-label">First Name<span className="text-danger">*</span></label>
@@ -452,11 +445,12 @@ const AddEmployee = () => {
                         </div>
                         <div class="col-12">
                           <label for="TxtLastName" class="form-label">Last Name<span className="text-danger">*</span></label>
-                          <input type="text" class={lastnamevalidation} id="TxtLastName" value={lastname}
+                          <input type="text" class={lastnamevalidation} id="TxtLastName" value={lastname} required=""
                             onChange={(e) => {
                               setLastName(e.target.value)
                               setLastNameValidation("form-control");
                             }} placeholder="Enter Last Name" />
+                           
                         </div>
                         <div class="col-12">
                           <label for="TxtEmail" class="form-label">Email<span className="text-danger">*</span></label>
@@ -498,18 +492,14 @@ const AddEmployee = () => {
                             onChange={(e) => {
                               setAlternatePhoneNumber(e.target.value)
                               setAlternatePhoneNumberValidation("form-control");
-
-
-                            }} placeholder="Enter Alternate Phone Number" />
+                         }} placeholder="Enter Alternate Phone Number" />
                         </div>
-
                         <div class="col-12">
                           <label for="DDLDesignation" class="form-label">Designation<span className="text-danger">*</span></label>
                           <select class={designationvalidation} id="DDLDesignation" value={designation}
                             onChange={(e) => {
                               SetDesignation(e.target.value)
                               setDesignationValidation("form-control")
-
                             }}>
                             <option value="">Select</option>
                             <option value="CEO">CEO</option>
@@ -693,32 +683,28 @@ const AddEmployee = () => {
                               setPermanentAddressZipCodeValidation("form-control")
                             }} placeholder="Enter Permanent Address Zip Code" />
                         </div>
+                        
 
                         <div class="text-center">
                           <span>
-                            <button style={{ width: "200px" }} type="submit" class="btn btn-primary">Submit</button> {" "}
-                            <button style={{ width: "200px" }} type="reset" class="btn btn-secondary">Reset</button>
+                            <button style={{ width: "100px" }} type="submit" class="btn btn-primary">Submit</button> {" "}
+                            <button style={{ width: "100px" }} type="reset" class="btn btn-secondary">Reset</button>{" "}
+                            <button style={{ width: "100px" }} type="Edit" class="btn btn-warning">Edit</button> {" "}
+                            <button style={{ width: "100px" }} type="Delete" class="btn btn-danger">Delete</button> {" "}
                           </span>
                         </div>
                       </form>
 
                     </div>
                   </div>
-
-
-
-
                 </div>
               </div>
             </div>
             <div class="col-2"></div>
           </div>
-
         </section>
-
-
       </main>
-    </div>
+  </div>
   );
 }
 

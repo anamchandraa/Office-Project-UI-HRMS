@@ -21,8 +21,6 @@ import AllLeaveRequests from "./pages/SubAdmin/AllLeaveRequests";
 import GetAttendenceRequest from "./pages/SubAdmin/GetAttendenceRequest";
 import {TimeoutLogic} from "./components/TimeoutLogic";
 
-
-
 function App() {
   const [user, setUser] = useState(null);
   return (
@@ -74,15 +72,8 @@ function App() {
             <GetAttendenceRequest />
             // </ProtectedRoute>
           } />
-
-
-
-
-
-
-
-
-          <Route path='profile' element={
+           
+           <Route path='profile' element={
             // <ProtectedRoute user={user}>
             <Profile />
             // </ProtectedRoute>
@@ -135,33 +126,15 @@ function App() {
           } >
 
           </Route>
-
-
-
-
-
-        </Route>
-
-
-
-        <Route path='view-Attendence' element={
+         </Route>
+          <Route path='view-Attendence' element={
           // <ProtectedRoute user={user}>
           <ViewAttendence />
           // </ProtectedRoute>
         } >
 
         </Route>
-
-
-
-
-
-
-
-
-
-
-      </Routes>
+        </Routes>
     </BrowserRouter>
   );
 }

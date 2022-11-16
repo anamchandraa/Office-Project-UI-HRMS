@@ -3,7 +3,9 @@ const Home = () => {
   return (
     
       <Outlet />
-    
-  );
+      
+      
+      
+    );
 };
 export default Home;

@@ -90,15 +90,15 @@ debugger
     }
 
     return (
-        <main id="main" class="main">
+        <main id="main" className="main">
             <section className="section">
-                <div class="pagetitle">
+                <div className="pagetitle">
                     <h1>All Employees</h1>
                     <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item">Leave Request</li>
-                            <li class="breadcrumb-item active">All</li>
+                        <ol className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li className="breadcrumb-item">Leave Request</li>
+                            <li className="breadcrumb-item active">All</li>
                         </ol>
                     </nav>
                 </div>
@@ -143,11 +143,11 @@ debugger
                         </select>
                     </div>
 
-                    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
+                    <div className="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
 
-                        <div class="form-group form-focus select-focus">
-                            <input class="form-control floating" type="date" />
-                            <label class="focus-label"></label></div></div>
+                        <div className="form-group form-focus select-focus">
+                            <input className="form-control floating" type="date" />
+                            <label className="focus-label"></label></div></div>
 
 
 
@@ -162,13 +162,13 @@ debugger
 
             <br />
 
-            <section class="section">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Leave Request</h5>
-                                <table class="table">
+            <section className="section">
+                <div className="row">
+                    <div className="col-lg-12">
+                        <div className="card">
+                            <div className="card-body">
+                                <h5 className="card-title">Leave Request</h5>
+                                <table className="table">
                                     <thead>
                                         <tr>
                                             <th scope="col">Id#</th>

@@ -7,10 +7,6 @@ const AllEmployeeAttendence = () => {
     const [data, setData] = React.useState([]);
 
     // const [data2,setData2]=useState([]);
-
-    
-
-
     useEffect(() => {
         fetchData();
     }, []);
@@ -30,38 +26,10 @@ const AllEmployeeAttendence = () => {
                 "MonthandYear": "2022-11"
             }, config)
             .then((res) => {
-                
-                
-
-            //     console.log(res.data.data[0].Attendance);
-            //     // let array=res.data.data[0].Attendance
-            //     setData2(res.data.data[0].Attendance);
-            //     let ts=data2.map(ele=>ele.Attendance);
-            //     console.log(ts);
-
-            //     let fir=ts[3];
-            //     console.log(fir);
-
-            //     let dr=fir.map(ele=>ele.WorkingHours);
-            //     console.log(dr[0]);
-
-            //     let lengt=dr[0];
-            //     let f=moment(lengt).format("hh-mm")
-
-
-            //    console.log(f);
-
-
-              
-                setData(res.data.data)
+           setData(res.data.data)
             })
 
     }
-
-    
-
-    
-
     return (
 
         <main id="main" className="main">
@@ -73,7 +41,7 @@ const AllEmployeeAttendence = () => {
                             <li className="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                             <li className="breadcrumb-item">Employees</li>
                             <li className="breadcrumb-item active">All</li>
-                            
+
                         </ol>
                     </nav>
                 </div>
@@ -88,7 +56,7 @@ const AllEmployeeAttendence = () => {
 
                         </div>
                     </div>
-                    
+
 
                     <div className="col-sm-6 col-md-3">
                         <select class="form-select" aria-label="Default select example">
@@ -143,8 +111,7 @@ const AllEmployeeAttendence = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                        {
+                                          {
                                             data.map(d => {
                                                 return (
 
@@ -198,7 +165,7 @@ const AllEmployeeAttendence = () => {
                                                                     if (i === dayLeave) {
                                                                         debugger;
                                                                         leaveTitle = "Leave: " + leave.WeekDay + " - " + leave.LeaveRequestType
-                                                                        colorCircle = "yellow"
+                                                                        colorCircle = "orange"
                                                                         break;
                                                                     }
                                                                     else {
@@ -215,6 +182,7 @@ const AllEmployeeAttendence = () => {
                                                             data.map((d, i) => {
 
                                                                 const count = Object.keys(d.Attendance).length;
+                                                     
 
 
                                                                 for (let i = 0; i <= count; i++) {
@@ -238,25 +206,19 @@ const AllEmployeeAttendence = () => {
                                                                             color = "green"
                                                                         }
                                                                         else if (attendance.AttendanceType === "HD") {
-                                                                            color = "orange"
+                                                                            color = "yellow"
                                                                             title = "Half Day"
                                                                         }
-
-
-
                                                                         var WorkingHours = 0;
+                                                                        var WorkingMins = 0;
                                                                         let activities = [];
                                                                         if (dailyCheckInOut != null && dailyCheckInOut != undefined) {
-
-
-
                                                                             for (let j = 0; j < dailyCheckInOutCount; j++) {
 
                                                                                 inTime = null
                                                                                 outTime = null
                                                                                 inLocation = null
                                                                                 outLocation = null
-
                                                                                 if (dailyCheckInOut[j] != null && dailyCheckInOut[j] != undefined) {
                                                                                     if (dailyCheckInOut[j].InTime != null && dailyCheckInOut[j].InTime != undefined) {
                                                                                         inTime = moment(dailyCheckInOut[j].InTime).utc().format('LTS');
@@ -268,33 +230,33 @@ const AllEmployeeAttendence = () => {
                                                                                     }
 
                                                                                     if (dailyCheckInOut[j].WorkingHours != null && dailyCheckInOut[j].WorkingHours != undefined) {
-                                                                                        
+
                                                                                         // const WkHrs = Moment(dailyCheckInOut[j].WorkingHours)
                                                                                         // WorkingHours = WorkingHours + WkHrs.hours();
 
-                                                                                        WorkingHours = WorkingHours + dailyCheckInOut[j].WorkingHours;
+                                                                                        var workinghrsArray = dailyCheckInOut[j].WorkingHours.split(':');
+                                                                                        
+                                                                                        var hrs = parseInt(workinghrsArray[0]);
+                                                                                        var mins = parseInt(workinghrsArray[1]);
+
+                                                                                        WorkingHours = WorkingHours + hrs;
+                                                                                        WorkingMins = WorkingMins + mins;
+                                                                                        
                                                                                     }
                                                                                 }
-
-
-
-
                                                                                 activities.push(<div key={j}>
 
                                                                                     <div class="activity-item d-flex">
                                                                                         <div class="activite-label">In</div>
                                                                                         <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                                                                                        <div class="activity-content">
+                                                                                        <div className="activity-content">
                                                                                             {inTime} - {inLocation}
                                                                                         </div>
                                                                                     </div>
-
-
-
-                                                                                    <div class="activity-item d-flex">
-                                                                                        <div class="activite-label">out</div>
-                                                                                        <i class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
-                                                                                        <div class="activity-content">
+                                                                                    <div className="activity-item d-flex">
+                                                                                        <div className="activite-label">out</div>
+                                                                                        <i className="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
+                                                                                        <div className="activity-content">
                                                                                             {outTime} - {outLocation}
                                                                                         </div>
                                                                                     </div>
@@ -302,41 +264,29 @@ const AllEmployeeAttendence = () => {
 
                                                                                 </div>)
                                                                             }
-
-
                                                                         }
-
                                                                         const col = <td id={d.EmployeeName + "_" + day} key={day}>
                                                                             <button style={{ border: "none", background: "white" }} type="button" data-bs-toggle="modal" data-bs-target={"#basicModal" + "_" + day}>
                                                                                 <i style={{ width: "20px", color: color }} className="ri-checkbox-circle-fill" data-bs-toggle="tooltip" data-bs-placement="top"
                                                                                     title={title} ></i>
                                                                             </button>
-                                                                            <div class="modal fade" id={"basicModal" + "_" + day} tabindex="-1" style={{ display: "none" }} aria-hidden="true">
-                                                                                <div class="modal-dialog modal-lg">
-                                                                                    <div class="modal-content">
-                                                                                        <div class="modal-header">
-                                                                                            <h5 class="modal-title">Attendance Info</h5>
+                                                                            <div className="modal fade" id={"basicModal" + "_" + day} tabindex="-1" style={{ display: "none" }} aria-hidden="true">
+                                                                                <div className="modal-dialog modal-lg">
+                                                                                    <div className="modal-content">
+                                                                                        <div className="modal-header">
+                                                                                            <h5 className="modal-title">Attendance Info</h5>
                                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                                         </div>
-                                                                                        <div class="modal-body">
-
-
-                                                                                            <section class="section dashboard">
-                                                                                                <div class="row">
-
-
-                                                                                                    <div class="col-lg-12">
-                                                                                                        <div class="row">
-
-                                                                                                            <div class="col-lg-12">
-
-
-                                                                                                                <div class="card">
-
-                                                                                                                    <div class="card-body">
-                                                                                                                        <h5 class="card-title">Punch In/Out Activity</h5>
-
-                                                                                                                        <div class="activity">
+                                                                                        <div className="modal-body">
+                                                                                            <section className="section dashboard">
+                                                                                                <div className="row">
+                                                                                                    <div className="col-lg-12">
+                                                                                                        <div className="row">
+                                                                                                            <div className="col-lg-12">
+                                                                                                                <div className="card">
+                                                                                                                    <div className="card-body">
+                                                                                                                        <h5 className="card-title">Punch In/Out Activity</h5>
+                                                                                                                        <div className="activity">
 
                                                                                                                             {
                                                                                                                                 activities
@@ -346,16 +296,15 @@ const AllEmployeeAttendence = () => {
                                                                                                                             {
                                                                                                                                 activities = []
                                                                                                                             }
-
-
-
                                                                                                                             
-
-
-                                                                                                                            <span><b>Working Hours:</b> {WorkingHours}</span>
-
-
-
+                                                                                                                            <div className="icon">
+                                                                                                                                <div className="bi bi-alarm-fill">
+                                                                                                                                    <span><b>Working Hours:</b> {WorkingHours + (WorkingMins/60) } Hrs</span>
+                                                                                                                            </div>
+                                                                                                                                
+                                                                                                                            
+                                                                                                                             {/* <span><b>Working Hours:</b> {WorkingHours + (WorkingMins/60) } Hrs</span> */}
+                                                                                                                           </div>
                                                                                                                         </div>
 
                                                                                                                     </div>
@@ -366,12 +315,7 @@ const AllEmployeeAttendence = () => {
                                                                                                 </div>
                                                                                             </section>
                                                                                         </div>
-
-
                                                                                     </div>
-
-
-
                                                                                 </div>
                                                                             </div>
 
@@ -386,13 +330,7 @@ const AllEmployeeAttendence = () => {
                                                     </tr>
                                                 );
                                             })
-
-
-
-
                                         }
-
-
                                     </tbody>
                                 </table>
 
@@ -402,8 +340,6 @@ const AllEmployeeAttendence = () => {
                 </div>
             </section >
         </main >
-
-
     )
 };
 export default AllEmployeeAttendence;

@@ -21,6 +21,7 @@ const LeaveRequest = () => {
     const [warnrequirdReason, setwarnrequirdReason] = useState("");
     const [warnrequirdLeaveType, setwarnrequirdLeaveType] = useState("");
     const [warnrequirdIsPaid, setwarnrequirdIsPaid] = useState("");
+    
 
     const inputEvent = event => {
         
